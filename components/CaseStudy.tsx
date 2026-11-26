@@ -66,7 +66,7 @@ export function CaseStudy({ project, lang }: { project: Project; lang: Lang }) {
         <div className="wrap contact-grid">
           <div>
             <h2 id="links">{l.stack}</h2>
-            <p className="case-stack">{project.stack.join(" · ")}</p>
+            <p className="case-stack">{project.stack.join(", ")}</p>
           </div>
           <div className="contact-actions">
             {project.live && (

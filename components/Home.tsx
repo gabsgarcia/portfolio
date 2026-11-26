@@ -49,19 +49,12 @@ export function Home({ lang }: { lang: Lang }) {
           <Link href={projectPath(lang, featured.slug)} className="hero-visual" aria-label={`${featured.title}: ${t.work.caseLink}`}>
             <Cover kind={featured.cover} lang={lang} />
             <span className="hero-visual__caption">
-              {featured.title} <span aria-hidden="true">→</span>
+              {featured.title}
             </span>
           </Link>
         </div>
         <div className="wrap">
-          <dl className="facts">
-            {t.facts.map((f) => (
-              <div key={f.big}>
-                <dt>{f.big}</dt>
-                <dd>{f.small}</dd>
-              </div>
-            ))}
-          </dl>
+          <p className="facts">{t.facts}</p>
         </div>
       </section>
 
@@ -82,7 +75,7 @@ export function Home({ lang }: { lang: Lang }) {
                 <Link href={projectPath(lang, featured.slug)}>{featured.title}</Link>
               </h3>
               <p className="card__text">{featured.summary[lang]}</p>
-              <p className="card__stack">{featured.stack.join(" · ")}</p>
+              <p className="card__stack">{featured.stack.join(", ")}</p>
               <div className="card__links">
                 <Link href={projectPath(lang, featured.slug)} className="btn btn--primary btn--sm">
                   {t.work.caseLink}
@@ -110,9 +103,9 @@ export function Home({ lang }: { lang: Lang }) {
                       <a href={href}>{p.title}</a>
                     </h3>
                     <p className="card__text">{p.summary[lang]}</p>
-                    <p className="card__stack">{p.stack.join(" · ")}</p>
+                    <p className="card__stack">{p.stack.join(", ")}</p>
                     <a href={href} className="text-link">
-                      {p.live ? t.work.liveLink : t.work.codeLink} <span aria-hidden="true">→</span>
+                      {p.live ? t.work.liveLink : t.work.codeLink}
                     </a>
                   </div>
                 </article>

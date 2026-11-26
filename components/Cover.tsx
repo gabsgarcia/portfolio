@@ -1,0 +1,71 @@
+import type { CoverKind } from "@/content/projects";
+
+// Drawn covers: a faithful sketch of each product's main screen, made in
+// HTML so it stays sharp and themed. Swap for real screenshots any time
+// by rendering an <Image> here instead.
+
+export function Cover({ kind, lang }: { kind: CoverKind; lang: "pt" | "en" }) {
+  if (kind === "rongalong") return <RongAlongCover lang={lang} />;
+  if (kind === "kanban") return <KanbanCover />;
+  return <DataCover />;
+}
+
+function RongAlongCover({ lang }: { lang: "pt" | "en" }) {
+  const unsure = lang === "pt" ? "IA em dúvida" : "AI unsure";
+  return (
+    <div className="cover cover--rong" aria-hidden="true">
+      <div className="rong-line">
+        <span className="rong-th" lang="th">ฉันรักเธอ</span>
+        <span className="rong-rom" lang="th-Latn">chan rak thoe</span>
+        <span className="rong-en" lang="en">I love you</span>
+      </div>
+      <div className="rong-line rong-line--unsure">
+        <span className="rong-th" lang="th">ใจของฉัน</span>
+        <span className="rong-rom" lang="th-Latn">
+          <mark>jai</mark> khoong chan
+        </span>
+        <span className="rong-flag">⚠ {unsure}</span>
+      </div>
+      <div className="rong-line rong-line--dim">
+        <span className="rong-th" lang="th">เธออออ~</span>
+        <span className="rong-rom" lang="th-Latn">thoe~</span>
+      </div>
+    </div>
+  );
+}
+
+const columns = [
+  { name: "Applied", cards: 3 },
+  { name: "Interview", cards: 2 },
+  { name: "Offer", cards: 1 },
+];
+
+function KanbanCover() {
+  return (
+    <div className="cover cover--kanban" aria-hidden="true">
+      {columns.map((c) => (
+        <div className="kb-col" key={c.name}>
+          <span className="kb-name">{c.name}</span>
+          {Array.from({ length: c.cards }, (_, i) => (
+            <span className="kb-card" key={i} style={{ width: `${92 - i * 14}%` }} />
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+const bars = [38, 64, 52, 88, 71, 46, 95, 60, 77, 54, 83, 69];
+
+function DataCover() {
+  return (
+    <div className="cover cover--data" aria-hidden="true">
+      <div className="data-bars">
+        {bars.map((h, i) => (
+          <span key={i} style={{ height: `${h}%` }} />
+        ))}
+      </div>
+      <span className="data-label">listings · reviews · calendar</span>
+    </div>
+  );
+}

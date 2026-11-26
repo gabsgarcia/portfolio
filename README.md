@@ -26,4 +26,4 @@ Colors, fonts and components follow the "Gabi Garcia" design system: paper backg
 
 ## Deploy
 
-Import the repository in Vercel (no environment variables needed). Every push to `main` goes to production; every branch gets a preview link. Once the final domain is known, set `NEXT_PUBLIC_SITE_URL` in Vercel so social previews use it.
+Import the repository in Vercel (no environment variables needed). Every push to `main` goes to production; every branch gets a preview link. The site lives at https://portfolio-gabigarcia.vercel.app. If it moves to a custom domain, set `NEXT_PUBLIC_SITE_URL` in Vercel (or change the default in `lib/meta.ts`).

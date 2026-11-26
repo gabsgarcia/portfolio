@@ -4,14 +4,23 @@ import { CaseStudy } from "@/components/CaseStudy";
 import { AvailabilityBar, Footer, Header } from "@/components/Chrome";
 import { getProject, projects } from "@/content/projects";
 import { projectPath } from "@/lib/i18n";
+import { pageMetadata } from "@/lib/meta";
 
 export function generateStaticParams() {
   return projects.filter((p) => p.caseStudy).map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const project = getProject((await params).slug);
-  return project ? { title: project.title, description: project.summary.en } : {};
+  const { slug } = await params;
+  const project = getProject(slug);
+  if (!project) return {};
+  return pageMetadata({
+    lang: "en",
+    path: projectPath("en", slug),
+    altPath: projectPath("pt", slug),
+    title: project.title,
+    description: project.summary.en,
+  });
 }
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {

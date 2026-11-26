@@ -81,7 +81,7 @@ export function Home({ lang }: { lang: Lang }) {
                   {t.work.caseLink}
                 </Link>
                 {featured.live && (
-                  <a href={featured.live} className="btn btn--ghost btn--sm">
+                  <a target="_blank" rel="noopener noreferrer" href={featured.live} className="btn btn--ghost btn--sm">
                     {t.work.liveLink}
                   </a>
                 )}
@@ -94,17 +94,17 @@ export function Home({ lang }: { lang: Lang }) {
               const href = p.live ?? p.code ?? "#";
               return (
                 <article className="card" key={p.slug}>
-                  <a href={href} className="card__media" tabIndex={-1} aria-hidden="true">
+                  <a target="_blank" rel="noopener noreferrer" href={href} className="card__media" tabIndex={-1} aria-hidden="true">
                     <Cover kind={p.cover} lang={lang} />
                   </a>
                   <div className="card__body">
                     <span className="tag">{p.tag[lang]}</span>
                     <h3 className="card__title">
-                      <a href={href}>{p.title}</a>
+                      <a target="_blank" rel="noopener noreferrer" href={href}>{p.title}</a>
                     </h3>
                     <p className="card__text">{p.summary[lang]}</p>
                     <p className="card__stack">{p.stack.join(", ")}</p>
-                    <a href={href} className="text-link">
+                    <a target="_blank" rel="noopener noreferrer" href={href} className="text-link">
                       {p.live ? t.work.liveLink : t.work.codeLink}
                     </a>
                   </div>
@@ -190,8 +190,8 @@ export function Home({ lang }: { lang: Lang }) {
             </a>
             <p className="contact-email">{EMAIL}</p>
             <p className="contact-links">
-              <a href={LINKEDIN}>LinkedIn</a>
-              <a href={GITHUB}>GitHub</a>
+              <a target="_blank" rel="noopener noreferrer" href={LINKEDIN}>LinkedIn</a>
+              <a target="_blank" rel="noopener noreferrer" href={GITHUB}>GitHub</a>
             </p>
           </div>
         </div>

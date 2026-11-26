@@ -1,0 +1,305 @@
+/* Lab page. The frame uses the portfolio tokens; each experiment brings its own palette. */
+
+.lab-intro { padding-bottom: clamp(40px, 6vw, 72px); }
+.lab-title {
+  margin-top: var(--space-4);
+  max-width: 14ch;
+  font: 800 clamp(48px, 8.5vw, 112px)/0.92 var(--font-display), sans-serif;
+  letter-spacing: -0.04em;
+}
+.lab-lead { margin-top: var(--space-6); max-width: 44ch; }
+.lab-note { margin-top: var(--space-4); max-width: 60ch; color: var(--ink-muted); font-size: 15px; }
+
+.lab-notes { border-top: 1px solid var(--line); }
+.lab-notes__grid { display: grid; gap: var(--space-8); }
+@media (min-width: 900px) {
+  .lab-notes__grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-16); }
+}
+.lab-notes__head { display: grid; gap: var(--space-4); align-content: start; }
+.lab-n { font: 500 14px/1 var(--font-mono), monospace; color: var(--coral); }
+.lab-notes__pitch { color: var(--ink-muted); font-size: 18px; }
+.lab-notes__body { display: grid; gap: var(--space-4); align-content: start; }
+.lab-notes__body h3:not(:first-child) { margin-top: var(--space-6); }
+.lab-notes__body p { color: var(--ink-muted); }
+.lab-how { display: grid; gap: var(--space-3); counter-reset: how; }
+.lab-how li {
+  counter-increment: how;
+  display: grid;
+  grid-template-columns: 2.2em 1fr;
+  color: var(--ink-muted);
+}
+.lab-how li::before {
+  content: counter(how, decimal-leading-zero);
+  font: 500 13px/1.9 var(--font-mono), monospace;
+  color: var(--violet);
+}
+.lab-how li > span { display: block; }
+.lab-how strong { color: var(--ink); font-weight: 600; }
+.lab-learn { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-6); }
+
+/* ---------- 01 · Torra, a made-up coffee shop ---------- */
+
+.torra {
+  --torra-bg: #f1e6d6;
+  --torra-ink: #2a1810;
+  --torra-crema: #c8894f;
+  position: relative;
+  background: var(--torra-bg);
+  color: var(--torra-ink);
+  font-family: var(--font-torra), Georgia, serif;
+}
+
+.torra-stage {
+  position: relative;
+  height: 100svh;
+  min-height: 560px;
+  overflow: hidden;
+  /* The site header is sticky, so leave room for it at the top of the pinned scene. */
+  padding: calc(72px + clamp(12px, 3vw, 32px)) var(--gutter) 0;
+}
+
+.torra-brand {
+  position: relative;
+  z-index: 5;
+  font: 600 clamp(22px, 2.4vw, 30px)/1 var(--font-torra), Georgia, serif;
+  font-variation-settings: "SOFT" 100, "WONK" 1;
+  letter-spacing: -0.01em;
+}
+.torra-place {
+  position: absolute;
+  z-index: 5;
+  top: calc(72px + clamp(12px, 3vw, 32px) + 36px);
+  left: var(--gutter);
+  font: 500 12px/1.2 var(--font-mono), monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.torra-word {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 300 clamp(120px, 33vw, 520px)/1 var(--font-torra), Georgia, serif;
+  font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 144;
+  font-style: italic;
+  letter-spacing: -0.05em;
+  color: var(--torra-crema);
+  user-select: none;
+}
+.torra-word span { display: inline-block; will-change: transform; }
+
+.torra-scene {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+/* The cup, seen from above: saucer, ceramic rim, coffee and crema. */
+.torra-cup {
+  --cup: min(54vmin, 440px);
+  position: relative;
+  z-index: 2;
+  width: var(--cup);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #fffaf3, #e9dccb 70%, #d8c7b1);
+  box-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.6) inset,
+    0 30px 60px -20px rgba(42, 24, 16, 0.45),
+    0 8px 16px rgba(42, 24, 16, 0.12);
+  display: grid;
+  place-items: center;
+  will-change: transform;
+}
+.torra-cup__rim {
+  width: 68%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 32%, #ffffff, #efe4d5 75%);
+  box-shadow: 0 10px 22px -8px rgba(42, 24, 16, 0.5);
+  display: grid;
+  place-items: center;
+}
+.torra-cup__handle {
+  position: absolute;
+  top: 50%;
+  right: 4%;
+  width: 18%;
+  height: 9%;
+  translate: 0 -50%;
+  border-radius: 999px;
+  background: linear-gradient(#fffaf3, #e3d4c0);
+  box-shadow: 0 6px 12px -6px rgba(42, 24, 16, 0.5);
+}
+.torra-cup__coffee {
+  width: 84%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  background: radial-gradient(circle, #6b3d22 0 40%, #3a2014 70%, #24130b);
+  box-shadow: inset 0 6px 14px rgba(0, 0, 0, 0.45);
+}
+.torra-crema {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%, #f1d3ad 0 7%, transparent 24%),
+    conic-gradient(from 0deg, #c8894f, #7a4526, #e2b07c, #8b5330, #d49a62, #6e3c20, #c8894f);
+  -webkit-mask: radial-gradient(circle, #000 52%, transparent 74%);
+  mask: radial-gradient(circle, #000 52%, transparent 74%);
+  opacity: 0.85;
+  will-change: transform;
+}
+
+/* Beans: an ellipse with a curved crease. Size and blur come from their depth. */
+.torra-bean {
+  position: absolute;
+  left: calc(50% + var(--x));
+  top: calc(50% + var(--y));
+  width: var(--size);
+  height: calc(var(--size) * 1.38);
+  margin: calc(var(--size) * -0.69) 0 0 calc(var(--size) * -0.5);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #8c5634, #4a2715 60%, #2e170c);
+  filter: blur(var(--blur));
+  transform: rotate(var(--rot));
+  box-shadow: 0 6px 10px -4px rgba(42, 24, 16, 0.5);
+  will-change: transform;
+}
+.torra-bean::after {
+  content: "";
+  position: absolute;
+  inset: 12% 42% 12% 46%;
+  border-radius: 50%;
+  border-left: 2px solid #1d0e06;
+  opacity: 0.7;
+}
+
+.torra-lines {
+  position: absolute;
+  z-index: 4;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: clamp(72px, 12vh, 120px);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 0.6em;
+  font: 400 clamp(26px, 5vw, 64px)/1.05 var(--font-torra), Georgia, serif;
+  font-variation-settings: "SOFT" 100, "WONK" 1;
+  font-style: italic;
+  text-align: center;
+}
+
+.torra-cta {
+  position: absolute;
+  z-index: 5;
+  right: var(--gutter);
+  bottom: clamp(20px, 4vw, 40px);
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: var(--torra-crema);
+  color: #24140d;
+  font: 600 15px/1 var(--font-sans), sans-serif;
+}
+
+.torra-hint {
+  position: absolute;
+  z-index: 5;
+  left: var(--gutter);
+  bottom: clamp(26px, 4vw, 46px);
+  font: 500 12px/1 var(--font-mono), monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+/* Animated mode (added by JS only when motion is allowed): lines stack on top of each other. */
+.torra.is-animated .torra-lines { display: grid; }
+.torra.is-animated .torra-line { grid-area: 1 / 1; }
+
+@media (max-aspect-ratio: 3/4) {
+  .torra-cup { --cup: 72vw; }
+}
+
+@media (max-width: 600px) {
+  .torra-cta { left: var(--gutter); right: auto; }
+  .torra-hint { left: auto; right: var(--gutter); }
+  /* Leave room for the floating availability bar. */
+  .torra-cta, .torra-hint { bottom: 108px; }
+  .torra-lines, .torra.is-animated .torra-lines { bottom: 168px; }
+  .gem .gem-words { padding-bottom: 120px; }
+}
+
+/* ---------- 02 · Ruby gem in 3D ---------- */
+
+.gem {
+  position: relative;
+  display: grid;
+  min-height: 100svh;
+  background:
+    radial-gradient(60% 50% at 70% 45%, rgba(91, 63, 160, 0.55), transparent 70%),
+    radial-gradient(40% 40% at 20% 90%, rgba(224, 72, 42, 0.25), transparent 70%),
+    #120b2e;
+  color: #f6f1ea;
+  overflow: hidden;
+}
+.gem-canvas {
+  position: relative;
+  height: 62svh;
+  min-height: 340px;
+}
+.gem-canvas canvas { display: block; }
+.gem-words {
+  position: relative;
+  z-index: 2;
+  align-self: end;
+  padding: 0 var(--gutter) clamp(48px, 8vw, 96px);
+  max-width: 640px;
+  pointer-events: none;
+}
+.gem-kicker {
+  font: 500 13px/1 var(--font-mono), monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fadfcf;
+}
+.gem-title {
+  margin-top: var(--space-4);
+  font: 800 clamp(44px, 7vw, 96px)/0.95 var(--font-display), sans-serif;
+  letter-spacing: -0.04em;
+}
+.gem-text { margin-top: var(--space-4); max-width: 38ch; color: #c9c1dc; font-size: 18px; }
+.gem-hint {
+  position: absolute;
+  bottom: clamp(24px, 4vw, 40px);
+  right: var(--gutter);
+  font: 500 12px/1 var(--font-mono), monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #c9c1dc;
+  opacity: 0.7;
+}
+@media (hover: none) { .gem-hint { display: none; } }
+
+@media (min-width: 900px) {
+  .gem { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); align-items: center; }
+  .gem-canvas { order: 2; height: 100svh; }
+  .gem-words { align-self: center; padding-bottom: 0; padding-right: 0; }
+}
+
+/* No WebGL: a still gem in CSS, an octagon with a faceted gradient. */
+.gem-fallback {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: min(48vmin, 340px);
+  aspect-ratio: 1;
+  clip-path: polygon(30% 0, 70% 0, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0 70%, 0 30%);
+  background: conic-gradient(from 22.5deg, #e0482a, #8e1d1a, #ff7a5c, #a5231d, #e0482a, #7a1714, #ff8f73, #9b211b, #e0482a);
+}

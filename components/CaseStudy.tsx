@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { Project } from "@/content/projects";
+import { liveHref, type Project } from "@/content/projects";
 import { dict, homePath, type Lang } from "@/lib/i18n";
 import { Cover } from "./Cover";
 
@@ -70,7 +70,7 @@ export function CaseStudy({ project, lang }: { project: Project; lang: Lang }) {
           </div>
           <div className="contact-actions">
             {project.live && (
-              <a target="_blank" rel="noopener noreferrer" className="btn btn--accent" href={project.live}>
+              <a target="_blank" rel="noopener noreferrer" className="btn btn--accent" href={liveHref(project, lang)}>
                 {t.work.liveLink}
               </a>
             )}

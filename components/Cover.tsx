@@ -6,6 +6,7 @@ import type { CoverKind } from "@/content/projects";
 
 export function Cover({ kind, lang }: { kind: CoverKind; lang: "pt" | "en" }) {
   if (kind === "rongalong") return <RongAlongCover lang={lang} />;
+  if (kind === "kissa") return <KissaCover />;
   if (kind === "kanban") return <KanbanCover />;
   return <DataCover />;
 }
@@ -30,6 +31,34 @@ function RongAlongCover({ lang }: { lang: "pt" | "en" }) {
         <span className="rong-th" lang="th">เธออออ~</span>
         <span className="rong-rom" lang="th-Latn">thoe~</span>
       </div>
+    </div>
+  );
+}
+
+// The Kissa demo in miniature: its own palette (paper, matcha, hanko red), not the portfolio's.
+const kissaRows = [
+  ["Matcha latte", "22"],
+  ["Tamago sando", "28"],
+  ["Dorayaki", "14"],
+];
+
+function KissaCover() {
+  const rows = kissaRows;
+  return (
+    <div className="cover cover--kissa" aria-hidden="true">
+      <div className="kissa-cv-top">
+        <span className="kissa-cv-stamp" lang="ja">喫<br />茶</span>
+        <span className="kissa-cv-name">Kissa</span>
+      </div>
+      <ul className="kissa-cv-menu">
+        {rows.map(([n, p]) => (
+          <li key={n}>
+            <span>{n}</span>
+            <i />
+            <span>R$ {p}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

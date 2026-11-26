@@ -83,6 +83,11 @@ export function CaseStudy({ project, lang }: { project: Project; lang: Lang }) {
             )}
           </div>
         </div>
+        <div className="wrap case-end">
+          <Link href={`${homePath(lang)}#projetos`} className="btn btn--ghost-deep">
+            <span aria-hidden="true">←</span> {t.backToWork}
+          </Link>
+        </div>
       </section>
     </main>
   );

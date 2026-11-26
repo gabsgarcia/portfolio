@@ -14,8 +14,8 @@ export type PhotoKey = "hero" | "matcha" | "sando" | "doces" | "balcao" | "noren
 /** What each photo shows. Used as alt text and as the caption of the placeholder. */
 export const photos: Record<PhotoKey, T> = {
   hero: {
-    pt: "Matcha latte gelado num copo alto sobre o balcão de madeira clara, com luz da janela.",
-    en: "Iced matcha latte in a tall glass on the pale wooden counter, in window light.",
+    pt: "Matcha latte gelado num copo alto junto à janela, com sombra de folhas na parede.",
+    en: "Iced matcha latte in a tall glass by the window, with leaf shadows on the wall.",
   },
   matcha: {
     pt: "Usucha recém-batido numa tigela de cerâmica escura, com o batedor de bambu ao lado.",
@@ -200,7 +200,7 @@ export const copy = {
       whatsapp: "Esta é uma demo. No site de verdade, abre uma conversa no WhatsApp do café.",
       instagram: "Esta é uma demo. No site de verdade, abre o Instagram do café.",
     },
-    footerNote: "O Kissa é um café fictício, criado por Gabi Garcia como projeto de portfólio.",
+    footerNote: "O Kissa é um café fictício, criado por Gabi Garcia como projeto de portfólio. As fotos foram geradas com IA.",
     footerLink: "Ver o case",
   },
   en: {
@@ -244,7 +244,7 @@ export const copy = {
       whatsapp: "This is a demo. On a real site, this opens a WhatsApp chat with the café.",
       instagram: "This is a demo. On a real site, this opens the café's Instagram.",
     },
-    footerNote: "Kissa is a fictional café, made by Gabi Garcia as a portfolio project.",
+    footerNote: "Kissa is a fictional café, made by Gabi Garcia as a portfolio project. The photos were generated with AI.",
     footerLink: "See the case study",
   },
 } satisfies Record<Lang, unknown>;

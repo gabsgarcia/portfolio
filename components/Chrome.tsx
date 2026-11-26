@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { dict, EMAIL, GITHUB, LINKEDIN, homePath, type Lang } from "@/lib/i18n";
+import { dict, EMAIL, GITHUB, LINKEDIN, homePath, labPath, type Lang } from "@/lib/i18n";
 
 export function Header({ lang, otherHref }: { lang: Lang; otherHref: string }) {
   const t = dict[lang];
@@ -13,6 +13,7 @@ export function Header({ lang, otherHref }: { lang: Lang; otherHref: string }) {
         <nav aria-label={lang === "pt" ? "Principal" : "Main"}>
           <a href={`${home}#projetos`}>{t.nav.work}</a>
           <a href={`${home}#metodo`}>{t.nav.method}</a>
+          <Link href={labPath(lang)}>{t.nav.lab}</Link>
           <a href={`${home}#contato`}>{t.nav.contact}</a>
           <a href={otherHref} hrefLang={lang === "pt" ? "en" : "pt-BR"} aria-label={t.nav.otherLangLabel} className="lang-switch">
             {t.nav.otherLang}

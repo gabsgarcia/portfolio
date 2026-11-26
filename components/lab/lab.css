@@ -2,7 +2,6 @@
 
 .lab-intro { padding-bottom: clamp(40px, 6vw, 72px); }
 .lab-title {
-  margin-top: var(--space-4);
   max-width: 14ch;
   font: 800 clamp(48px, 8.5vw, 112px)/0.92 var(--font-display), sans-serif;
   letter-spacing: -0.04em;
@@ -16,7 +15,6 @@
   .lab-notes__grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-16); }
 }
 .lab-notes__head { display: grid; gap: var(--space-4); align-content: start; }
-.lab-n { font: 500 14px/1 var(--font-mono), monospace; color: var(--coral); }
 .lab-notes__pitch { color: var(--ink-muted); font-size: 18px; }
 .lab-notes__body { display: grid; gap: var(--space-4); align-content: start; }
 .lab-notes__body h3:not(:first-child) { margin-top: var(--space-6); }
@@ -29,8 +27,8 @@
   color: var(--ink-muted);
 }
 .lab-how li::before {
-  content: counter(how, decimal-leading-zero);
-  font: 500 13px/1.9 var(--font-mono), monospace;
+  content: counter(how) ".";
+  font-weight: 700;
   color: var(--violet);
 }
 .lab-how li > span { display: block; }
@@ -70,10 +68,8 @@
   z-index: 5;
   top: calc(72px + clamp(12px, 3vw, 32px) + 36px);
   left: var(--gutter);
-  font: 500 12px/1.2 var(--font-mono), monospace;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  opacity: 0.7;
+  font: italic 400 16px/1.2 var(--font-torra), Georgia, serif;
+  opacity: 0.75;
 }
 
 .torra-word {
@@ -213,10 +209,8 @@
   z-index: 5;
   left: var(--gutter);
   bottom: clamp(26px, 4vw, 46px);
-  font: 500 12px/1 var(--font-mono), monospace;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  opacity: 0.6;
+  font: italic 400 16px/1 var(--font-torra), Georgia, serif;
+  opacity: 0.7;
 }
 
 /* Animated mode (added by JS only when motion is allowed): lines stack on top of each other. */
@@ -264,9 +258,7 @@
   pointer-events: none;
 }
 .gem-kicker {
-  font: 500 13px/1 var(--font-mono), monospace;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font: 600 16px/1 var(--font-sans), sans-serif;
   color: #fadfcf;
 }
 .gem-title {
@@ -279,9 +271,7 @@
   position: absolute;
   bottom: clamp(24px, 4vw, 40px);
   right: var(--gutter);
-  font: 500 12px/1 var(--font-mono), monospace;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font: 500 14px/1 var(--font-sans), sans-serif;
   color: #c9c1dc;
   opacity: 0.7;
 }

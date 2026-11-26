@@ -9,9 +9,6 @@ function Notes({ id, e }: { id: string; e: (typeof labCopy)["pt"]["experiments"]
     <section id={id} className="band lab-notes" aria-labelledby={`${id}-title`}>
       <div className="wrap lab-notes__grid">
         <div className="lab-notes__head">
-          <span className="lab-n" aria-hidden="true">
-            {e.n}
-          </span>
           <h2 id={`${id}-title`}>{e.title}</h2>
           <p className="lab-notes__pitch">{e.pitch}</p>
           <p className="card__stack">{e.stack}</p>
@@ -55,7 +52,6 @@ export function LabPage({ lang }: { lang: Lang }) {
     <main className="lab">
       <section className="band lab-intro">
         <div className="wrap">
-          <span className="tag">{t.eyebrow}</span>
           <h1 className="lab-title">{t.title}</h1>
           <p className="lead lab-lead">{t.lead}</p>
           <p className="lab-note">{t.note}</p>

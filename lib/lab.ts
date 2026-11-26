@@ -4,7 +4,6 @@ import type { Lang } from "./i18n";
 
 type Link = { label: string; href: string };
 type Experiment = {
-  n: string;
   title: string;
   pitch: string;
   stack: string;
@@ -19,7 +18,6 @@ type Experiment = {
 export type LabCopy = {
   metaTitle: string;
   metaDescription: string;
-  eyebrow: string;
   title: string;
   lead: string;
   note: string;
@@ -44,13 +42,12 @@ export const labCopy: Record<Lang, LabCopy> = {
   pt: {
     metaTitle: "Lab de movimento",
     metaDescription: "Experimentos de hero com rolagem, parallax e 3D, feitos com ferramentas gratuitas e pensados para rodar bem no celular.",
-    eyebrow: "Lab",
     title: "Quando o site pede mais movimento",
     lead: "A maioria dos pequenos negócios precisa de um site rápido e claro. Alguns lançamentos pedem mais. Estes experimentos mostram o que eu consigo entregar quando é o caso.",
     note: "Cada experimento tem a sua própria identidade visual, porque cada marca deveria ter a sua. Com \"reduzir movimento\" ligado no seu aparelho, tudo aparece parado e legível.",
     cafe: {
       brand: "Torra",
-      place: "café de bairro · desde 2019",
+      place: "café de bairro, desde 2019",
       lines: ["Torrado aqui.", "Moído na hora.", "Servido sem pressa."],
       cta: "Ver o cardápio",
       hint: "Role para baixo",
@@ -64,10 +61,9 @@ export const labCopy: Record<Lang, LabCopy> = {
     },
     experiments: [
       {
-        n: "01",
         title: "Uma rolagem que conta a história",
         pitch: "Hero de uma cafeteria fictícia. A seção fica presa na tela e a rolagem vira a linha do tempo: a xícara cresce, os grãos se espalham em profundidade e o fundo escurece como a torra.",
-        stack: "GSAP · ScrollTrigger · CSS puro",
+        stack: "GSAP, ScrollTrigger, CSS puro",
         howTitle: "Como funciona",
         how: [
           "Pin + scrub: o ScrollTrigger prende a seção e liga a animação à barra de rolagem. Rolar para cima volta a animação.",
@@ -82,10 +78,9 @@ export const labCopy: Record<Lang, LabCopy> = {
         learn: learnScroll,
       },
       {
-        n: "02",
         title: "Um objeto 3D que responde a você",
         pitch: "Uma gema de rubi, porque Ruby é a linguagem que eu mais uso. Ela segue o mouse, gira com a rolagem e reflete um estúdio de luz criado dentro do navegador.",
-        stack: "Three.js · React Three Fiber",
+        stack: "Three.js, React Three Fiber",
         howTitle: "Como funciona",
         how: [
           "Geometria no código: o LatheGeometry gira um perfil de 6 pontos em 8 lados e forma a lapidação. Nenhum modelo para baixar.",
@@ -104,13 +99,12 @@ export const labCopy: Record<Lang, LabCopy> = {
   en: {
     metaTitle: "Motion lab",
     metaDescription: "Hero experiments with scroll, parallax and 3D, built with free tools and made to run well on phones.",
-    eyebrow: "Lab",
     title: "When a site needs more motion",
     lead: "Most small businesses need a fast, clear website. Some launches need more. These experiments show what I can deliver when that is the case.",
     note: "Each experiment has its own visual identity, because each brand should have its own. With \"reduce motion\" turned on in your device, everything shows still and readable.",
     cafe: {
       brand: "Torra",
-      place: "neighbourhood coffee · since 2019",
+      place: "neighbourhood coffee, since 2019",
       lines: ["Roasted here.", "Ground to order.", "Served slowly."],
       cta: "See the menu",
       hint: "Scroll down",
@@ -124,10 +118,9 @@ export const labCopy: Record<Lang, LabCopy> = {
     },
     experiments: [
       {
-        n: "01",
         title: "A scroll that tells the story",
         pitch: "Hero for a made-up coffee shop. The section stays pinned and scrolling becomes the timeline: the cup grows, the beans spread out in depth and the background darkens like a roast.",
-        stack: "GSAP · ScrollTrigger · plain CSS",
+        stack: "GSAP, ScrollTrigger, plain CSS",
         howTitle: "How it works",
         how: [
           "Pin + scrub: ScrollTrigger pins the section and ties the animation to the scrollbar. Scrolling back up plays it backwards.",
@@ -142,10 +135,9 @@ export const labCopy: Record<Lang, LabCopy> = {
         learn: learnScroll,
       },
       {
-        n: "02",
         title: "A 3D object that answers you",
         pitch: "A ruby gem, because Ruby is the language I use most. It follows the mouse, turns as you scroll and reflects a light studio created inside the browser.",
-        stack: "Three.js · React Three Fiber",
+        stack: "Three.js, React Three Fiber",
         howTitle: "How it works",
         how: [
           "Geometry in code: LatheGeometry spins a 6-point profile around 8 sides to make the cut. No model to download.",

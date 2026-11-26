@@ -13,12 +13,16 @@ export function projectPath(lang: Lang, slug: string) {
   return lang === "pt" ? `/projetos/${slug}` : `/en/projects/${slug}`;
 }
 
+export function labPath(lang: Lang) {
+  return lang === "pt" ? "/lab" : "/en/lab";
+}
+
 export const dict = {
   pt: {
     metaTitle: "Gabi Garcia · Desenvolvedora full-stack",
     metaDescription:
       "Sites rápidos para pequenos negócios, produtos com IA e sistemas web. Desenvolvedora full-stack e professora na Le Wagon.",
-    nav: { work: "Projetos", method: "Como trabalho", contact: "Contato", otherLang: "EN", otherLangLabel: "Read in English" },
+    nav: { work: "Projetos", method: "Como trabalho", lab: "Lab", contact: "Contato", otherLang: "EN", otherLangLabel: "Read in English" },
     hero: {
       intro:
         "Desenvolvedora full-stack e professora na Le Wagon. Faço sites rápidos para pequenos negócios e produtos com IA que funcionam de verdade.",
@@ -72,7 +76,7 @@ export const dict = {
     metaTitle: "Gabi Garcia · Full-stack developer",
     metaDescription:
       "Fast websites for small businesses, AI products and web apps. Full-stack developer and Le Wagon teacher.",
-    nav: { work: "Work", method: "How I work", contact: "Contact", otherLang: "PT", otherLangLabel: "Ler em português" },
+    nav: { work: "Work", method: "How I work", lab: "Lab", contact: "Contact", otherLang: "PT", otherLangLabel: "Ler em português" },
     hero: {
       intro:
         "Full-stack developer and Le Wagon teacher. I build fast websites for small businesses and AI products that actually work.",

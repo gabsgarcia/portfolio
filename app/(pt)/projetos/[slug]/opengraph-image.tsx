@@ -3,7 +3,7 @@ import { ogSize, renderOgImage, rongalongArt } from "@/lib/og";
 
 export const size = ogSize;
 export const contentType = "image/png";
-export const alt = "Gabi Garcia";
+export const alt = "Case de projeto · Gabi Garcia";
 
 export function generateStaticParams() {
   return projects.filter((p) => p.caseStudy).map((p) => ({ slug: p.slug }));

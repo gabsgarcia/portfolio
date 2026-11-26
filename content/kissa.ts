@@ -26,8 +26,8 @@ export const photos: Record<PhotoKey, T> = {
     en: "Tamago sando cut in half, showing the creamy egg filling.",
   },
   doces: {
-    pt: "Dorayaki aberto com recheio de feijão doce, ao lado de um pudim de matcha.",
-    en: "Dorayaki cut open with sweet bean filling, next to a matcha pudding.",
+    pt: "Purin, o pudim japonês dos kissatens, com calda de caramelo escorrendo num pratinho de cerâmica.",
+    en: "Purin, the kissaten's custard pudding, with caramel running down onto a small ceramic plate.",
   },
   balcao: {
     pt: "Canto do balcão de madeira com chaleira de café coado e xícaras artesanais.",
@@ -131,16 +131,19 @@ export const menu: MenuGroup[] = [
     title: { pt: "Doces", en: "Sweets" },
     items: [
       {
-        name: "Dorayaki",
-        jp: "どら焼き",
-        note: { pt: "Duas panquecas fofas com recheio de feijão azuki doce.", en: "Two fluffy pancakes filled with sweet azuki bean paste." },
-        price: 14,
+        name: "Purin",
+        jp: "プリン",
+        note: {
+          pt: "O pudim dos kissatens: pequeno, firme e com calda de caramelo amargo. Primo japonês do nosso pudim.",
+          en: "The kissaten pudding: small, firm, with a bitter caramel sauce. A cousin of Brazil's pudim.",
+        },
+        price: 16,
       },
       {
-        name: "Pudim de matcha",
-        jp: "抹茶プリン",
-        note: { pt: "Cremoso, pouco doce, com calda de açúcar mascavo.", en: "Creamy, lightly sweet, with brown sugar syrup." },
-        price: 16,
+        name: "Brownie de matcha",
+        jp: "抹茶ブラウニー",
+        note: { pt: "Chocolate branco e matcha, úmido no meio.", en: "White chocolate and matcha, fudgy in the middle." },
+        price: 14,
       },
     ],
   },

@@ -29,7 +29,7 @@ export const dict = {
       primary: "Ver projetos",
       accent: "Conversar comigo",
     },
-    facts: "Me formei no bootcamp da Le Wagon em 2021 e hoje dou aula nele. Atendo em português e inglês, no Brasil e fora.",
+    facts: "Me formei no bootcamp da Le Wagon em 2021 e hoje dou aula nele. Atendo em português e inglês, no Brasil e fora. Trabalho remoto, com entregas toda semana e um link para você acompanhar o site sendo construído.",
     work: { title: "Projetos", lead: "Produtos no ar, com código, decisões e o que cada um resolve.", caseLink: "Ver o case", liveLink: "Abrir o site", codeLink: "Ver o código" },
     services: {
       title: "O que eu faço",
@@ -82,7 +82,7 @@ export const dict = {
       primary: "See my work",
       accent: "Let's talk",
     },
-    facts: "I graduated from the Le Wagon bootcamp in 2021 and now teach it. I work in English and Portuguese, with clients in Brazil and abroad.",
+    facts: "I graduated from the Le Wagon bootcamp in 2021 and now teach it. I work in English and Portuguese, with clients in Brazil and abroad. I work remotely, ship every week and give you a preview link to watch your site take shape.",
     work: { title: "Work", lead: "Live products, with the code, the decisions and what each one solves.", caseLink: "Read the case study", liveLink: "Open the site", codeLink: "See the code" },
     services: {
       title: "What I build",

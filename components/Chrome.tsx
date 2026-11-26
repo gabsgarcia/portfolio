@@ -50,8 +50,8 @@ export function Footer({ lang }: { lang: Lang }) {
       <div className="wrap footer-row">
         <span>Gabriella Garcia. {t.footer}</span>
         <span className="footer-links">
-          <a href={LINKEDIN}>LinkedIn</a>
-          <a href={GITHUB}>GitHub</a>
+          <a target="_blank" rel="noopener noreferrer" href={LINKEDIN}>LinkedIn</a>
+          <a target="_blank" rel="noopener noreferrer" href={GITHUB}>GitHub</a>
           <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
         </span>
       </div>

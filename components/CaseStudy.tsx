@@ -70,12 +70,12 @@ export function CaseStudy({ project, lang }: { project: Project; lang: Lang }) {
           </div>
           <div className="contact-actions">
             {project.live && (
-              <a className="btn btn--accent" href={project.live}>
+              <a target="_blank" rel="noopener noreferrer" className="btn btn--accent" href={project.live}>
                 {t.work.liveLink}
               </a>
             )}
             {project.code ? (
-              <a className="btn btn--ghost-deep" href={project.code}>
+              <a target="_blank" rel="noopener noreferrer" className="btn btn--ghost-deep" href={project.code}>
                 {t.work.codeLink}
               </a>
             ) : (

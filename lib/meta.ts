@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { dict, type Lang } from "./i18n";
 
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gabsgarcia-portfolio.vercel.app";
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://portfolio-gabigarcia.vercel.app";
 
 export function baseMetadata(lang: Lang): Metadata {
   const t = dict[lang];

@@ -49,7 +49,7 @@ export function Footer({ lang }: { lang: Lang }) {
   return (
     <footer className="site-footer band">
       <div className="wrap footer-row">
-        <span>Gabriella Garcia · {t.footer}</span>
+        <span>Gabriella Garcia. {t.footer}</span>
         <span className="footer-links">
           <a href={LINKEDIN}>LinkedIn</a>
           <a href={GITHUB}>GitHub</a>

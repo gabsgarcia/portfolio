@@ -759,6 +759,11 @@ h3 {
 /* Case study */
 .case-hero { padding-top: clamp(32px, 5vw, 56px); }
 .back-link { margin-bottom: var(--space-8); }
+.case-end {
+  margin-top: var(--space-12);
+  padding-top: var(--space-8);
+  border-top: 1px solid rgba(246, 241, 234, 0.15);
+}
 .case-hero .tag { display: block; width: max-content; margin-bottom: var(--space-4); }
 
 .case-title {

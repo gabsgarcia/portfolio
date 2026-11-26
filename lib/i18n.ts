@@ -65,6 +65,7 @@ export const dict = {
     avail: { long: "Disponível para freelas e vagas", short: "Disponível", button: "Conversar" },
     footer: "Feito com Next.js e revisado à mão.",
     back: "Voltar para o início",
+    backToWork: "Voltar para os projetos",
     caseLabels: { problem: "O problema", solution: "O que eu construí", decisions: "Decisões que importam", stack: "Stack", links: "Links", codePrivate: "Código privado" },
   },
   en: {
@@ -118,6 +119,7 @@ export const dict = {
     avail: { long: "Available for freelance and full-time roles", short: "Available", button: "Let's talk" },
     footer: "Built with Next.js and reviewed by hand.",
     back: "Back to home",
+    backToWork: "Back to all work",
     caseLabels: { problem: "The problem", solution: "What I built", decisions: "Decisions that matter", stack: "Stack", links: "Links", codePrivate: "Private code" },
   },
 } as const;

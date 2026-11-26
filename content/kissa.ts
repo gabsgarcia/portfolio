@@ -129,6 +129,7 @@ export const menu: MenuGroup[] = [
   {
     id: "doces",
     title: { pt: "Doces", en: "Sweets" },
+    photo: "doces",
     items: [
       {
         name: "Purin",

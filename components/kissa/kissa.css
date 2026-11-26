@@ -330,6 +330,7 @@
 }
 
 .ks-group-photo { aspect-ratio: 3 / 2; margin-bottom: 24px; }
+.ks-group--wide { margin-top: 56px; }
 
 .ks-item + .ks-item { margin-top: 18px; }
 .ks-item-line { display: flex; align-items: baseline; gap: 10px; font-weight: 700; font-size: 1.125rem; }
@@ -345,6 +346,17 @@
   .ks-menu-col { row-gap: 72px; }
   /* The right column starts lower, like a menu board hung a little off the grid */
   .ks-menu-col + .ks-menu-col { padding-top: 96px; }
+  /* Sweets close the menu in one wide row: list on the left, photo on the right */
+  .ks-group--wide {
+    margin-top: 72px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto 1fr;
+    column-gap: 72px;
+    align-items: start;
+  }
+  .ks-group--wide .ks-group-photo { grid-column: 2; grid-row: 1 / 3; margin-bottom: 0; }
+  .ks-group--wide h3, .ks-group--wide ul { grid-column: 1; }
 }
 
 /* ---------- The place ---------- */

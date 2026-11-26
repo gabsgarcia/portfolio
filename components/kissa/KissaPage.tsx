@@ -76,9 +76,9 @@ export function KissaPage({ lang }: { lang: Lang }) {
             <p>{t.menuLead}</p>
           </div>
 
-          {/* Two columns: drinks on the left, food on the right */}
+          {/* Two columns: drinks on the left, savoury on the right, sweets in a wide row to close */}
           <div className="ks-menu-groups">
-            {[menu.slice(0, 2), menu.slice(2)].map((col, ci) => (
+            {[menu.slice(0, 2), menu.slice(2, 3)].map((col, ci) => (
               <div className="ks-menu-col" key={ci}>
                 {col.map((group) => (
                   <MenuGroupBlock key={group.id} group={group} lang={lang} price={price} />
@@ -86,6 +86,9 @@ export function KissaPage({ lang }: { lang: Lang }) {
               </div>
             ))}
           </div>
+          {menu.slice(3).map((group) => (
+            <MenuGroupBlock key={group.id} group={group} lang={lang} price={price} wide />
+          ))}
         </section>
 
         {/* The place, told through details instead of a wide room shot */}
@@ -151,9 +154,19 @@ export function KissaPage({ lang }: { lang: Lang }) {
   );
 }
 
-function MenuGroupBlock({ group, lang, price }: { group: MenuGroup; lang: Lang; price: (n: number) => string }) {
+function MenuGroupBlock({
+  group,
+  lang,
+  price,
+  wide,
+}: {
+  group: MenuGroup;
+  lang: Lang;
+  price: (n: number) => string;
+  wide?: boolean;
+}) {
   return (
-    <section className={`ks-group ks-group--${group.id}`} aria-labelledby={`ks-g-${group.id}`}>
+    <section className={`ks-group ks-group--${group.id}${wide ? " ks-group--wide" : ""}`} aria-labelledby={`ks-g-${group.id}`}>
       {group.photo && <Photo name={group.photo} lang={lang} sizes="(min-width: 900px) 40vw, 90vw" className="ks-group-photo" />}
       <h3 id={`ks-g-${group.id}`}>{group.title[lang]}</h3>
       <ul>

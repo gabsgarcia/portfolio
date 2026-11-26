@@ -10,6 +10,9 @@
   --violet-soft: #ece5fa;
   --on-violet: #ffffff;
   --peach: #fadfcf;
+  /* Bright peach tiles keep the same colour in both themes. */
+  --peach-glow: #fadfcf;
+  --on-peach: #0e0a24;
   --coral: #e0482a;
   --on-coral: #0e0a24;
   --deep: #140d35;
@@ -53,7 +56,8 @@
     --violet: #b9a3f0;
     --violet-soft: #241a45;
     --on-violet: #0e0a24;
-    --peach: #3a2620;
+    /* Peach bands become a violet surface at night: darkened peach turns brown. */
+    --peach: #2a1f4f;
     --coral: #ff7a5c;
     --deep: #05030f;
     --available: #4ade9b;
@@ -275,6 +279,10 @@ h3 {
   text-transform: uppercase;
 }
 
+@media (prefers-color-scheme: dark) {
+  .hero-name { color: var(--peach-glow); }
+}
+
 .lead {
   font-size: clamp(18px, 2vw, 21px);
   line-height: 1.5;
@@ -287,7 +295,8 @@ h3 {
   display: block;
   padding: clamp(20px, 4vw, 40px);
   padding-bottom: 64px;
-  background: var(--peach);
+  background: var(--peach-glow);
+  color: var(--on-peach);
   border-radius: var(--radius-lg);
   text-decoration: none;
 }
@@ -420,6 +429,48 @@ h3 {
 
 .data-bars span:nth-child(4n) { background: #fadfcf; }
 .data-label { font: 500 12px/16px var(--font-mono), monospace; color: #bfe9d4; }
+
+/* Hero picture: a lyric line singing in depth (components/SingingLyric.tsx) */
+.sing {
+  position: relative;
+  min-height: clamp(260px, 30vw, 360px);
+  overflow: hidden;
+  perspective: 900px;
+  background: radial-gradient(70% 60% at 60% 40%, #2a1d5c, var(--deep) 72%);
+}
+.sing-rig { position: absolute; inset: 0; transform-style: preserve-3d; will-change: transform; }
+.sing-syl {
+  position: absolute;
+  top: calc(50% + var(--y));
+  left: calc(50% + var(--x));
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  transform: translate(-50%, -50%) translate3d(0, var(--float, 0px), var(--z));
+}
+.sing-syl b {
+  font: 700 calc(var(--size) * clamp(36px, 4.4vw, 56px))/1 var(--font-sans), sans-serif;
+  color: #8f82b8;
+  transition: color 200ms var(--ease-out), text-shadow 200ms var(--ease-out);
+}
+.sing-syl > span {
+  font: 500 14px/1 var(--font-mono), monospace;
+  color: #6d6390;
+  transition: color 200ms var(--ease-out);
+}
+.sing-syl.is-lit b { color: #fadfcf; text-shadow: 0 0 24px rgba(250, 223, 207, 0.45); }
+.sing-syl.is-lit > span { color: #ff7a5c; }
+.sing-syl em {
+  font: 600 12px/1 var(--font-sans), sans-serif;
+  font-style: normal;
+  white-space: nowrap;
+  padding: 4px 9px;
+  border-radius: var(--radius-pill);
+  background: #ff7a5c;
+  color: #0e0a24;
+  animation: unsure 1.6s ease-in-out infinite;
+}
+@keyframes unsure { 50% { opacity: 0.45; } }
 
 /* Project cards */
 .card {
@@ -708,7 +759,7 @@ h3 {
 .case-cover {
   margin-top: var(--space-12);
   padding: clamp(16px, 4vw, 48px);
-  background: var(--peach);
+  background: var(--peach-glow);
   border-radius: var(--radius-lg);
 }
 

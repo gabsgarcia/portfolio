@@ -2,6 +2,7 @@ import Link from "next/link";
 import { projects } from "@/content/projects";
 import { dict, EMAIL, GITHUB, LINKEDIN, projectPath, type Lang } from "@/lib/i18n";
 import { Cover } from "./Cover";
+import { SingingLyric } from "./SingingLyric";
 
 const skills: { name: string; abbr: string; family: "ruby" | "blue" | "green" | "amber" }[] = [
   { name: "Ruby on Rails", abbr: "Rb", family: "ruby" },
@@ -47,7 +48,7 @@ export function Home({ lang }: { lang: Lang }) {
             </div>
           </div>
           <Link href={projectPath(lang, featured.slug)} className="hero-visual" aria-label={`${featured.title}: ${t.work.caseLink}`}>
-            <Cover kind={featured.cover} lang={lang} />
+            <SingingLyric unsureLabel={lang === "pt" ? "IA em dúvida" : "AI unsure"} />
             <span className="hero-visual__caption">
               {featured.title}
             </span>

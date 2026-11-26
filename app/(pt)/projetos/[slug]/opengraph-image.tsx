@@ -1,5 +1,5 @@
 import { getProject, projects } from "@/content/projects";
-import { ogSize, renderOgImage } from "@/lib/og";
+import { ogSize, renderOgImage, rongalongArt } from "@/lib/og";
 
 export const size = ogSize;
 export const contentType = "image/png";
@@ -11,5 +11,5 @@ export function generateStaticParams() {
 
 export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
   const project = getProject((await params).slug);
-  return renderOgImage("pt", project && { title: project.title, subtitle: project.caseStudy?.lead.pt ?? project.summary.pt });
+  return renderOgImage("pt", project && { title: project.title, subtitle: project.caseStudy?.lead.pt ?? project.summary.pt }, project?.cover === "rongalong" ? rongalongArt.pt : undefined);
 }

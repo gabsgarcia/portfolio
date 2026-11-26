@@ -26,8 +26,8 @@ export type OgArt =
   | { kind: "thai-behind"; th: string; rom: string };
 
 export const homeArt: Record<Lang, OgArt> = {
-  pt: { kind: "words", words: ["agilidade", "criatividade", "AI engineering"], lit: 2 },
-  en: { kind: "words", words: ["speed", "creativity", "AI engineering"], lit: 2 },
+  pt: { kind: "words", words: ["agilidade", "qualidade", "AI engineering"], lit: 2 },
+  en: { kind: "words", words: ["speed", "quality", "AI engineering"], lit: 2 },
 };
 
 export const rongalongArt: Record<Lang, OgArt> = {

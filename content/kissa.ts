@@ -43,7 +43,8 @@ export const photos: Record<PhotoKey, T> = {
   },
 };
 
-export type MenuItem = { name: string; jp?: string; note: T; price: number };
+/** A Japanese name comes with its original writing and what it means, like 喫茶 in the hero. */
+export type MenuItem = { name: string; jp?: { text: string; meaning: T }; note: T; price: number };
 export type MenuGroup = { id: string; title: T; photo?: PhotoKey; items: MenuItem[] };
 
 export const menu: MenuGroup[] = [
@@ -54,19 +55,17 @@ export const menu: MenuGroup[] = [
     items: [
       {
         name: "Matcha latte",
-        jp: "抹茶ラテ",
-        note: { pt: "Matcha batido na hora com leite, quente ou gelado.", en: "Matcha whisked to order with milk, hot or iced." },
+        note: { pt: "Matcha (chá verde moído na pedra) batido na hora com leite, quente ou gelado.", en: "Matcha (stone-ground green tea) whisked to order with milk, hot or iced." },
         price: 22,
       },
       {
         name: "Usucha",
-        jp: "薄茶",
+        jp: { text: "薄茶", meaning: { pt: "chá leve", en: "light tea" } },
         note: { pt: "O matcha tradicional, só com água. Leve e com espuma fina.", en: "Traditional matcha with water only. Light, with a fine foam." },
         price: 18,
       },
       {
         name: "Matcha tônica",
-        jp: "抹茶トニック",
         note: { pt: "Matcha sobre água tônica e gelo, com casca de yuzu.", en: "Matcha over tonic water and ice, with yuzu peel." },
         price: 24,
       },
@@ -78,19 +77,16 @@ export const menu: MenuGroup[] = [
     items: [
       {
         name: "Coado",
-        jp: "ハンドドリップ",
         note: { pt: "Grãos de pequenos produtores da Mantiqueira, passados na hora.", en: "Beans from small Mantiqueira farms, poured over to order." },
         price: 12,
       },
       {
         name: "Espresso",
-        jp: "エスプレッソ",
         note: { pt: "Curto e encorpado.", en: "Short and full-bodied." },
         price: 8,
       },
       {
         name: "Latte",
-        jp: "カフェラテ",
         note: { pt: "Espresso com leite vaporizado.", en: "Espresso with steamed milk." },
         price: 14,
       },
@@ -103,19 +99,19 @@ export const menu: MenuGroup[] = [
     items: [
       {
         name: "Tamago sando",
-        jp: "玉子サンド",
+        jp: { text: "玉子サンド", meaning: { pt: "sanduíche de ovo", en: "egg sandwich" } },
         note: { pt: "O clássico dos kissatens: pão de leite macio e salada de ovo cremosa.", en: "The kissaten classic: soft milk bread and creamy egg salad." },
         price: 28,
       },
       {
         name: "Katsu sando",
-        jp: "カツサンド",
-        note: { pt: "Filé suíno empanado, repolho fino e molho tonkatsu.", en: "Breaded pork cutlet, shredded cabbage and tonkatsu sauce." },
+        jp: { text: "カツサンド", meaning: { pt: "sanduíche de empanado", en: "cutlet sandwich" } },
+        note: { pt: "Lombo de porco empanado, repolho fininho e molho tonkatsu.", en: "Breaded pork loin, finely shredded cabbage and tonkatsu sauce." },
         price: 34,
       },
       {
         name: "Korokke sando",
-        jp: "コロッケサンド",
+        jp: { text: "コロッケサンド", meaning: { pt: "sanduíche de croquete", en: "croquette sandwich" } },
         note: { pt: "Croquete de batata e repolho. A opção vegetariana.", en: "Potato croquette and cabbage. The vegetarian one." },
         price: 26,
       },
@@ -133,7 +129,7 @@ export const menu: MenuGroup[] = [
     items: [
       {
         name: "Purin",
-        jp: "プリン",
+        jp: { text: "プリン", meaning: { pt: "pudim", en: "pudding" } },
         note: {
           pt: "O pudim dos kissatens: pequeno, firme e com calda de caramelo amargo. Primo japonês do nosso pudim.",
           en: "The kissaten pudding: small, firm, with a bitter caramel sauce. A cousin of Brazil's pudim.",
@@ -142,7 +138,6 @@ export const menu: MenuGroup[] = [
       },
       {
         name: "Brownie de matcha",
-        jp: "抹茶ブラウニー",
         note: { pt: "Chocolate branco e matcha, úmido no meio.", en: "White chocolate and matcha, fudgy in the middle." },
         price: 14,
       },
@@ -177,7 +172,7 @@ export const copy = {
     verticalMeaning: "“Fique à vontade, tome um com calma.”",
     ctaVisit: "Como chegar",
     menuTitle: "Cardápio",
-    menuLead: "Os nomes em japonês vêm com uma linha explicando o que são. Pergunte no balcão se quiser saber mais.",
+    menuLead: "Quando o nome é japonês, logo abaixo vem a escrita original e o que ela quer dizer. Pergunte no balcão se quiser saber mais.",
     currency: "R$",
     placeTitle: "Um kissaten na Vila Mariana",
     placeText: [
@@ -221,7 +216,7 @@ export const copy = {
     verticalMeaning: "“Take your time, enjoy a cup.”",
     ctaVisit: "Find us",
     menuTitle: "Menu",
-    menuLead: "Every Japanese name comes with a line on what it is. Ask at the counter if you want to know more.",
+    menuLead: "When a name is Japanese, the original writing and what it means sit right below it. Ask at the counter if you want to know more.",
     currency: "R$",
     placeTitle: "A kissaten in Vila Mariana",
     placeText: [

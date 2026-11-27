@@ -335,7 +335,7 @@
 .ks-item + .ks-item { margin-top: 18px; }
 .ks-item-line { display: flex; align-items: baseline; gap: 10px; font-weight: 700; font-size: 1.125rem; }
 .ks-item-name { display: inline-flex; flex-wrap: wrap; align-items: baseline; column-gap: 10px; }
-.ks-item-jp { font-size: 0.875rem; font-weight: 500; color: var(--usucha); }
+.ks-item-jp { margin-top: 2px; font-size: 0.875rem; font-weight: 500; color: var(--usucha); }
 .ks-leader { flex: 1; min-width: 16px; border-bottom: 2px dotted rgba(236, 234, 221, 0.35); transform: translateY(-5px); }
 .ks-item-price { font-variant-numeric: tabular-nums; white-space: nowrap; }
 .ks-item-note { margin-top: 2px; font-size: 0.9375rem; color: var(--on-koicha-soft); max-width: 44ch; }

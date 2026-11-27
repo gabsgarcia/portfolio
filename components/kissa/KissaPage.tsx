@@ -173,17 +173,15 @@ function MenuGroupBlock({
         {group.items.map((item) => (
           <li key={item.name} className="ks-item">
             <p className="ks-item-line">
-              <span className="ks-item-name">
-                {item.name}
-                {item.jp && (
-                  <span className="ks-item-jp" lang="ja">
-                    {item.jp}
-                  </span>
-                )}
-              </span>
+              <span className="ks-item-name">{item.name}</span>
               <span className="ks-leader" aria-hidden="true" />
               <span className="ks-item-price">{price(item.price)}</span>
             </p>
+            {item.jp && (
+              <p className="ks-item-jp">
+                <span lang="ja">{item.jp.text}</span> · {item.jp.meaning[lang]}
+              </p>
+            )}
             <p className="ks-item-note">{item.note[lang]}</p>
           </li>
         ))}

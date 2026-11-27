@@ -1,5 +1,5 @@
 import { labCopy } from "@/lib/lab";
-import type { Lang } from "@/lib/i18n";
+import { EMAIL, type Lang } from "@/lib/i18n";
 import { CafeScroll } from "./CafeScroll";
 import { GemStage } from "./GemStage";
 import "./lab.css";
@@ -27,6 +27,13 @@ function Notes({ id, e }: { id: string; e: (typeof labCopy)["pt"]["experiments"]
               );
             })}
           </ol>
+          <aside className="lab-cta" aria-label={e.cta.title}>
+            <p className="lab-cta__title">{e.cta.title}</p>
+            <p className="lab-cta__text">{e.cta.text}</p>
+            <a className="btn btn--accent btn--sm" href={`mailto:${EMAIL}?subject=${encodeURIComponent(e.cta.subject)}`}>
+              {e.cta.button}
+            </a>
+          </aside>
         </div>
       </div>
     </section>

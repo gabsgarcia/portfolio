@@ -8,6 +8,8 @@ type Experiment = {
   stack: string;
   howTitle: string;
   how: string[];
+  /** Closing nudge under each experiment: invites the visitor to ask for it on their own site. */
+  cta: { title: string; text: string; button: string; subject: string };
 };
 
 export type LabCopy = {
@@ -55,6 +57,12 @@ export const labCopy: Record<Lang, LabCopy> = {
           "gsap.matchMedia: com \"reduzir movimento\" ligado, nada é preso nem animado e a composição final aparece parada.",
           "Nenhuma imagem: a xícara e os grãos são CSS. A página carrega rápido e nada fica borrado em telas retina.",
         ],
+        cta: {
+          title: "Gostou? Dá para ter isso no seu site.",
+          text: "A rolagem pode contar a história da sua marca, do seu produto ou do seu cardápio.",
+          button: "Vamos conversar",
+          subject: "Quero uma rolagem que conta a história no meu site",
+        },
       },
       {
         title: "Um objeto 3D que responde a você",
@@ -68,6 +76,12 @@ export const labCopy: Record<Lang, LabCopy> = {
           "Para quando sai da tela: o loop de render desliga fora da tela. Com \"reduzir movimento\", renderiza um quadro só.",
           "Plano B: sem WebGL, aparece uma gema em CSS no lugar.",
         ],
+        cta: {
+          title: "Gostou? Seu produto pode girar assim.",
+          text: "Uma joia, um tênis, uma embalagem: o cliente vira o produto com o mouse ou o dedo.",
+          button: "Vamos conversar",
+          subject: "Quero um objeto 3D no meu site",
+        },
       },
     ],
   },
@@ -104,6 +118,12 @@ export const labCopy: Record<Lang, LabCopy> = {
           "gsap.matchMedia: with \"reduce motion\" on, nothing is pinned or animated and the final composition shows still.",
           "No images: the cup and beans are CSS. The page loads fast and nothing blurs on retina screens.",
         ],
+        cta: {
+          title: "Like it? Your site can have this.",
+          text: "The scroll can tell the story of your brand, your product or your menu.",
+          button: "Let’s talk",
+          subject: "I want a scroll story on my site",
+        },
       },
       {
         title: "A 3D object that answers you",
@@ -117,6 +137,12 @@ export const labCopy: Record<Lang, LabCopy> = {
           "Stops when off screen: the render loop turns off outside the viewport. With \"reduce motion\", it renders a single frame.",
           "Plan B: without WebGL, a CSS gem shows instead.",
         ],
+        cta: {
+          title: "Like it? Your product can turn like this.",
+          text: "A piece of jewellery, a sneaker, a package: customers turn your product with a mouse or a finger.",
+          button: "Let’s talk",
+          subject: "I want a 3D object on my site",
+        },
       },
     ],
   },

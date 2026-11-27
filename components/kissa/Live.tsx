@@ -97,35 +97,55 @@ export function DemoAction({
     <button
       type="button"
       className={className}
-      onClick={() => window.dispatchEvent(new CustomEvent("kissa-toast", { detail: message }))}
+      onClick={(e) => {
+        const r = e.currentTarget.getBoundingClientRect();
+        window.dispatchEvent(new CustomEvent<ToastDetail>("kissa-toast", { detail: { message, rect: r } }));
+      }}
     >
       {children}
     </button>
   );
 }
 
+type ToastDetail = { message: string; rect: DOMRect };
+type ToastState = { message: string; n: number; style?: React.CSSProperties };
+
+/** The demo note shows up right next to the button that was pressed, and goes away on scroll. */
 export function Toaster() {
-  const [toast, setToast] = useState({ message: "", n: 0 });
+  const [toast, setToast] = useState<ToastState>({ message: "", n: 0 });
   const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
   useEffect(() => {
+    const hide = () => setToast((t) => (t.message ? { ...t, message: "" } : t));
     const onToast = (e: Event) => {
-      const message = (e as CustomEvent<string>).detail;
-      setToast((t) => ({ message, n: t.n + 1 }));
+      const { message, rect } = (e as CustomEvent<ToastDetail>).detail;
+      const vw = window.innerWidth;
+      const half = Math.min(240, vw / 2 - 16);
+      const left = Math.min(Math.max(rect.left + rect.width / 2, 16 + half), vw - 16 - half);
+      // Above the button, unless it sits near the top of the screen (the header): then below it
+      const above = rect.top > 160;
+      const style: React.CSSProperties = above
+        ? { left, top: rect.top - 12, transform: "translate(-50%, -100%)" }
+        : { left, top: rect.bottom + 12, transform: "translateX(-50%)" };
+      setToast((t) => ({ message, n: t.n + 1, style }));
       clearTimeout(timer.current);
-      timer.current = setTimeout(() => setToast((t) => ({ ...t, message: "" })), 4200);
+      timer.current = setTimeout(hide, 4200);
     };
     window.addEventListener("kissa-toast", onToast);
+    window.addEventListener("scroll", hide, { passive: true });
     return () => {
       window.removeEventListener("kissa-toast", onToast);
+      window.removeEventListener("scroll", hide);
       clearTimeout(timer.current);
     };
   }, []);
   return (
     <div className="ks-toast-region" role="status" aria-live="polite">
       {toast.message && (
-        <p className="ks-toast" key={toast.n}>
-          {toast.message}
-        </p>
+        <div className="ks-toast-anchor" style={toast.style}>
+          <p className="ks-toast" key={toast.n}>
+            {toast.message}
+          </p>
+        </div>
       )}
     </div>
   );

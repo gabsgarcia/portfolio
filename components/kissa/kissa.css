@@ -464,19 +464,8 @@
 
 /* ---------- Demo toast ---------- */
 
-.ks-toast-region {
-  position: fixed;
-  z-index: 30;
-  left: 16px;
-  right: 16px;
-  bottom: 88px;
-  display: flex;
-  justify-content: center;
-  pointer-events: none;
-}
-@media (min-width: 720px) {
-  .ks-toast-region { bottom: 24px; }
-}
+.ks-toast-region { position: fixed; inset: 0; z-index: 30; pointer-events: none; }
+.ks-toast-anchor { position: absolute; width: max-content; max-width: min(28rem, calc(100vw - 32px)); }
 .ks-toast {
   max-width: 28rem;
   padding: 14px 18px;

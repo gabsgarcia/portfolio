@@ -33,7 +33,6 @@
 }
 .lab-how li > span { display: block; }
 .lab-how strong { color: var(--ink); font-weight: 600; }
-.lab-learn { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-6); }
 
 /* ---------- 01 · Torra, a made-up coffee shop ---------- */
 
@@ -293,3 +292,18 @@
   clip-path: polygon(30% 0, 70% 0, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0 70%, 0 30%);
   background: conic-gradient(from 22.5deg, #e0482a, #8e1d1a, #ff7a5c, #a5231d, #e0482a, #7a1714, #ff8f73, #9b211b, #e0482a);
 }
+
+/* "Like it? Let's talk" nudge after each experiment. */
+.lab-cta {
+  margin-top: var(--space-8);
+  padding: var(--space-6);
+  border-radius: 20px;
+  background: var(--peach-glow);
+  color: var(--on-peach);
+  display: grid;
+  gap: var(--space-2);
+  justify-items: start;
+}
+.lab-cta__title { font: 800 clamp(22px, 2.4vw, 28px)/1.1 var(--font-display), sans-serif; letter-spacing: -0.02em; }
+.lab-notes__body .lab-cta p { color: inherit; }
+.lab-cta .lab-cta__text { opacity: 0.8; margin-bottom: var(--space-3); }

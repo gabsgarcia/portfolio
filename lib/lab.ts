@@ -2,17 +2,14 @@ import type { Lang } from "./i18n";
 
 /** Copy for the Lab page: motion experiments that show what Gabi can deliver beyond a simple site. */
 
-type Link = { label: string; href: string };
 type Experiment = {
   title: string;
   pitch: string;
   stack: string;
   howTitle: string;
   how: string[];
-  whenTitle: string;
-  when: string;
-  learnTitle: string;
-  learn: Link[];
+  /** Closing nudge under each experiment: invites the visitor to ask for it on their own site. */
+  cta: { title: string; text: string; button: string; subject: string };
 };
 
 export type LabCopy = {
@@ -25,18 +22,6 @@ export type LabCopy = {
   gem: { kicker: string; title: string; text: string; hint: string; fallback: string };
   experiments: [Experiment, Experiment];
 };
-
-const learnScroll: Link[] = [
-  { label: "GSAP ScrollTrigger (docs)", href: "https://gsap.com/docs/v3/Plugins/ScrollTrigger/" },
-  { label: "gsap.matchMedia (docs)", href: "https://gsap.com/docs/v3/GSAP/gsap.matchMedia()" },
-  { label: "Codrops", href: "https://tympanus.net/codrops/" },
-];
-
-const learn3d: Link[] = [
-  { label: "React Three Fiber (docs)", href: "https://r3f.docs.pmnd.rs/getting-started/introduction" },
-  { label: "Three.js (docs)", href: "https://threejs.org/docs/" },
-  { label: "prefers-reduced-motion (MDN)", href: "https://developer.mozilla.org/docs/Web/CSS/@media/prefers-reduced-motion" },
-];
 
 export const labCopy: Record<Lang, LabCopy> = {
   pt: {
@@ -72,10 +57,12 @@ export const labCopy: Record<Lang, LabCopy> = {
           "gsap.matchMedia: com \"reduzir movimento\" ligado, nada é preso nem animado e a composição final aparece parada.",
           "Nenhuma imagem: a xícara e os grãos são CSS. A página carrega rápido e nada fica borrado em telas retina.",
         ],
-        whenTitle: "Quando oferecer",
-        when: "Lançamento de marca, cafeteria, restaurante ou produto artesanal com história para contar. Para um orçamento menor, dá para entregar só o parallax, sem prender a seção.",
-        learnTitle: "Para aprender de graça",
-        learn: learnScroll,
+        cta: {
+          title: "Gostou? Dá para ter isso no seu site.",
+          text: "A rolagem pode contar a história da sua marca, do seu produto ou do seu cardápio.",
+          button: "Vamos conversar",
+          subject: "Quero uma rolagem que conta a história no meu site",
+        },
       },
       {
         title: "Um objeto 3D que responde a você",
@@ -89,10 +76,12 @@ export const labCopy: Record<Lang, LabCopy> = {
           "Para quando sai da tela: o loop de render desliga fora da tela. Com \"reduzir movimento\", renderiza um quadro só.",
           "Plano B: sem WebGL, aparece uma gema em CSS no lugar.",
         ],
-        whenTitle: "Quando oferecer",
-        when: "Produto físico (joia, cosmético, tênis, embalagem) ou startup que quer um primeiro impacto forte. Para um produto real, o modelo vem do Blender em .glb e entra no mesmo palco.",
-        learnTitle: "Para aprender de graça",
-        learn: learn3d,
+        cta: {
+          title: "Gostou? Seu produto pode girar assim.",
+          text: "Uma joia, um tênis, uma embalagem: o cliente vira o produto com o mouse ou o dedo.",
+          button: "Vamos conversar",
+          subject: "Quero um objeto 3D no meu site",
+        },
       },
     ],
   },
@@ -129,10 +118,12 @@ export const labCopy: Record<Lang, LabCopy> = {
           "gsap.matchMedia: with \"reduce motion\" on, nothing is pinned or animated and the final composition shows still.",
           "No images: the cup and beans are CSS. The page loads fast and nothing blurs on retina screens.",
         ],
-        whenTitle: "When to offer it",
-        when: "Brand launches, coffee shops, restaurants or craft products with a story to tell. For a smaller budget, the parallax alone works without pinning the section.",
-        learnTitle: "Learn it for free",
-        learn: learnScroll,
+        cta: {
+          title: "Like it? Your site can have this.",
+          text: "The scroll can tell the story of your brand, your product or your menu.",
+          button: "Let’s talk",
+          subject: "I want a scroll story on my site",
+        },
       },
       {
         title: "A 3D object that answers you",
@@ -146,10 +137,12 @@ export const labCopy: Record<Lang, LabCopy> = {
           "Stops when off screen: the render loop turns off outside the viewport. With \"reduce motion\", it renders a single frame.",
           "Plan B: without WebGL, a CSS gem shows instead.",
         ],
-        whenTitle: "When to offer it",
-        when: "Physical products (jewellery, cosmetics, sneakers, packaging) or a startup that wants a strong first impression. For a real product, the model comes from Blender as .glb and goes on the same stage.",
-        learnTitle: "Learn it for free",
-        learn: learn3d,
+        cta: {
+          title: "Like it? Your product can turn like this.",
+          text: "A piece of jewellery, a sneaker, a package: customers turn your product with a mouse or a finger.",
+          button: "Let’s talk",
+          subject: "I want a 3D object on my site",
+        },
       },
     ],
   },

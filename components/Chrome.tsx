@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ThemeToggle } from "./ThemeToggle";
 import { dict, EMAIL, GITHUB, LINKEDIN, homePath, labPath, type Lang } from "@/lib/i18n";
 
 export function Header({ lang, otherHref }: { lang: Lang; otherHref: string }) {
@@ -18,6 +19,7 @@ export function Header({ lang, otherHref }: { lang: Lang; otherHref: string }) {
           <a href={otherHref} hrefLang={lang === "pt" ? "en" : "pt-BR"} aria-label={t.nav.otherLangLabel} className="lang-switch">
             {t.nav.otherLang}
           </a>
+          <ThemeToggle lang={lang} />
         </nav>
       </div>
     </header>

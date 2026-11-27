@@ -121,8 +121,9 @@ export function Toaster() {
       const vw = window.innerWidth;
       const half = Math.min(240, vw / 2 - 16);
       const left = Math.min(Math.max(rect.left + rect.width / 2, 16 + half), vw - 16 - half);
-      // Above the button, unless it sits near the top of the screen (the header): then below it
-      const above = rect.top > 160;
+      // Below the button, so it never covers the text that introduces it; above only when
+      // there is no room below (the phone bar pinned to the bottom of the screen)
+      const above = rect.bottom + 140 > window.innerHeight;
       const style: React.CSSProperties = above
         ? { left, top: rect.top - 12, transform: "translate(-50%, -100%)" }
         : { left, top: rect.bottom + 12, transform: "translateX(-50%)" };

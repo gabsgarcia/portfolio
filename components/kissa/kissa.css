@@ -414,16 +414,18 @@
 .ks-visit .ks-actions { margin-top: 0; }
 
 .ks-map { align-self: center; }
-.ks-map svg { display: block; width: 100%; height: auto; }
-.ks-map-streets path { fill: none; stroke: var(--washi); stroke-width: 18; stroke-linecap: round; }
-.ks-map-park path { fill: #c3c9a6; }
-.ks-map-walk { fill: none; stroke: var(--sumi); stroke-width: 3; stroke-dasharray: 2 10; stroke-linecap: round; }
-.ks-map-station circle:first-child { fill: var(--washi); stroke: var(--sumi); stroke-width: 3; }
-.ks-map-line1 { fill: #1f4ea3; }
-.ks-map-line2 { fill: #2f8a4c; }
-.ks-map-label { font: inherit; font-size: 15px; font-weight: 700; fill: var(--sumi); }
-.ks-map-walk-label { font-weight: 500; fill: var(--sumi-soft); }
-.ks-map-stamp { color: var(--shu); }
+.ks-map iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 6 / 5;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--washi);
+  box-shadow: 0 0 0 1.5px var(--sumi);
+}
+.ks-map figcaption { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 20px; margin-top: 14px; }
+.ks-map-open { font-weight: 700; color: var(--koicha); text-underline-offset: 4px; }
+.ks-map-note { font-size: 0.875rem; color: var(--sumi-soft); max-width: 40ch; }
 
 @media (min-width: 900px) {
   .ks-visit { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 72px; padding-top: 120px; padding-bottom: 120px; }

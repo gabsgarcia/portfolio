@@ -7,6 +7,12 @@ import type { Lang } from "@/lib/i18n";
 
 type T = Record<Lang, string>;
 
+/** A real place near the fictional café. On a client's site this is their own address. */
+const mapQuery = encodeURIComponent("Estação Ana Rosa, Vila Mariana, São Paulo");
+export const mapEmbed = (lang: Lang) =>
+  `https://www.google.com/maps?q=${mapQuery}&z=16&hl=${lang === "pt" ? "pt-BR" : "en"}&output=embed`;
+export const mapLink = `https://www.google.com/maps/search/?api=1&query=${mapQuery}`;
+
 export const kissaPath = (lang: Lang) => (lang === "pt" ? "/demos/kissa" : "/en/demos/kissa");
 
 export type PhotoKey = "hero" | "matcha" | "sando" | "doces" | "balcao" | "noren" | "prateleira";
@@ -190,9 +196,9 @@ export const copy = {
     orderTitle: "Peça pelo iFood ou fale com a gente",
     whatsapp: "WhatsApp",
     instagram: "Instagram",
-    mapLabel: "Mapa desenhado: o Kissa fica a quatro quarteirões da estação Ana Rosa.",
-    mapStation: "Metrô Ana Rosa",
-    mapWalk: "4 min a pé",
+    mapTitle: "Mapa do Google com a estação Ana Rosa, na Vila Mariana",
+    mapOpen: "Abrir no Google Maps",
+    mapNote: "Como o Kissa é fictício, o mapa marca a estação Ana Rosa. Num site de verdade, marca o endereço do café.",
     demoToast: {
       ifood: "Esta é uma demo. No site de verdade, este botão abre o Kissa no iFood.",
       whatsapp: "Esta é uma demo. No site de verdade, abre uma conversa no WhatsApp do café.",
@@ -234,9 +240,9 @@ export const copy = {
     orderTitle: "Order on iFood or get in touch",
     whatsapp: "WhatsApp",
     instagram: "Instagram",
-    mapLabel: "Hand-drawn map: Kissa is four blocks from Ana Rosa station.",
-    mapStation: "Ana Rosa station",
-    mapWalk: "4 min walk",
+    mapTitle: "Google map showing Ana Rosa station, in Vila Mariana",
+    mapOpen: "Open in Google Maps",
+    mapNote: "Kissa is fictional, so the map marks Ana Rosa station. On a real site, it marks the café's address.",
     demoToast: {
       ifood: "This is a demo. On a real site, this button opens Kissa on iFood.",
       whatsapp: "This is a demo. On a real site, this opens a WhatsApp chat with the café.",

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { copy, kissaPath, menu, type MenuGroup } from "@/content/kissa";
+import { copy, kissaPath, mapEmbed, mapLink, menu, type MenuGroup } from "@/content/kissa";
 import { projectPath, type Lang } from "@/lib/i18n";
 import { LeafShadow } from "./LeafShadow";
 import { DemoAction, HoursTable, OpenNow, Toaster } from "./Live";
@@ -128,7 +128,7 @@ export function KissaPage({ lang }: { lang: Lang }) {
               </DemoAction>
             </div>
           </div>
-          <Map t={t} />
+          <Map t={t} lang={lang} />
         </section>
       </main>
 
@@ -190,36 +190,23 @@ function MenuGroupBlock({
   );
 }
 
-/** A hand-drawn map: a few blocks, the station, and a dotted walk to the stamp. */
-function Map({ t }: { t: (typeof copy)[Lang] }) {
+/** A real Google map, because that is what people use to find a place and get directions. */
+function Map({ t, lang }: { t: (typeof copy)[Lang]; lang: Lang }) {
   return (
     <figure className="ks-map">
-      <svg viewBox="0 0 480 400" role="img" aria-label={t.mapLabel}>
-        <g className="ks-map-streets">
-          <path d="M-10 92 C 120 84, 300 100, 490 88" />
-          <path d="M-10 236 C 140 228, 320 244, 490 232" />
-          <path d="M-10 352 C 160 346, 330 358, 490 350" />
-          <path d="M96 -10 C 104 120, 90 260, 100 410" />
-          <path d="M252 -10 C 244 130, 258 270, 248 410" />
-          <path d="M392 -10 C 400 140, 386 280, 396 410" />
-        </g>
-        <g className="ks-map-park">
-          <path d="M300 262 C 340 254, 372 262, 370 300 C 368 330, 330 336, 304 326 C 284 316, 282 276, 300 262 Z" />
-        </g>
-        <path className="ks-map-walk" d="M110 300 C 150 296, 200 244, 252 236 C 300 228, 320 170, 330 120" />
-        <g className="ks-map-station" transform="translate(100 306)">
-          <circle r="16" />
-          <circle r="5" cx="-6" className="ks-map-line1" />
-          <circle r="5" cx="6" className="ks-map-line2" />
-        </g>
-        <text className="ks-map-label" x="70" y="346">
-          {t.mapStation}
-        </text>
-        <text className="ks-map-label ks-map-walk-label" x="196" y="214">
-          {t.mapWalk}
-        </text>
-        <Stamp className="ks-map-stamp" x="314" y="62" width="40" height="72" />
-      </svg>
+      <iframe
+        src={mapEmbed(lang)}
+        title={t.mapTitle}
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+        allowFullScreen
+      />
+      <figcaption>
+        <a className="ks-map-open" href={mapLink} target="_blank" rel="noopener noreferrer">
+          {t.mapOpen} <span aria-hidden="true">↗</span>
+        </a>
+        <span className="ks-map-note">{t.mapNote}</span>
+      </figcaption>
     </figure>
   );
 }

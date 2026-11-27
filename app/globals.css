@@ -45,8 +45,10 @@
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
 }
 
+/* Dark theme. Follows the device unless the visitor picked a theme with the header toggle
+   (components/ThemeToggle.tsx sets data-theme on <html>). Keep both blocks in sync. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     color-scheme: dark;
     --paper: #0b0720;
     --surface: #16112e;
@@ -66,6 +68,27 @@
     --skill-green: #4ade9b;
     --skill-amber: #ffbf47;
   }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #0b0720;
+  --surface: #16112e;
+  --line: #2e2650;
+  --ink: #f6f1ea;
+  --ink-muted: #b8b0cc;
+  --violet: #b9a3f0;
+  --violet-soft: #241a45;
+  --on-violet: #0e0a24;
+  /* Peach bands become a violet surface at night: darkened peach turns brown. */
+  --peach: #2a1f4f;
+  --coral: #ff7a5c;
+  --deep: #05030f;
+  --available: #4ade9b;
+  --skill-ruby: #f07067;
+  --skill-blue: #7aa7ff;
+  --skill-green: #4ade9b;
+  --skill-amber: #ffbf47;
 }
 
 *,
@@ -251,6 +274,29 @@ h3 {
   font: 600 13px/18px var(--font-sans), sans-serif;
 }
 
+.theme-toggle {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--ink-muted);
+  cursor: pointer;
+  transition: color 160ms var(--ease-out), border-color 160ms var(--ease-out), transform 120ms var(--ease-out);
+}
+.theme-toggle:active { transform: scale(0.94); }
+@media (hover: hover) {
+  .theme-toggle:hover { color: var(--ink); border-color: var(--ink-muted); }
+}
+.theme-toggle svg { width: 16px; height: 16px; }
+/* Show the icon of the theme you would switch TO. */
+.theme-toggle .icon-sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+
 @media (max-width: 600px) {
   .site-header nav a:not(.lang-switch):not(:last-of-type) { display: none; }
 }
@@ -280,8 +326,9 @@ h3 {
 }
 
 @media (prefers-color-scheme: dark) {
-  .hero-name { color: var(--peach-glow); }
+  :root:not([data-theme="light"]) .hero-name { color: var(--peach-glow); }
 }
+:root[data-theme="dark"] .hero-name { color: var(--peach-glow); }
 
 .lead {
   font-size: clamp(18px, 2vw, 21px);

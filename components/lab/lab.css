@@ -33,7 +33,6 @@
 }
 .lab-how li > span { display: block; }
 .lab-how strong { color: var(--ink); font-weight: 600; }
-.lab-learn { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-6); }
 
 /* ---------- 01 · Torra, a made-up coffee shop ---------- */
 

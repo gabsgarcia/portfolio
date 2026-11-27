@@ -27,18 +27,6 @@ function Notes({ id, e }: { id: string; e: (typeof labCopy)["pt"]["experiments"]
               );
             })}
           </ol>
-          <h3>{e.whenTitle}</h3>
-          <p>{e.when}</p>
-          <h3>{e.learnTitle}</h3>
-          <ul className="lab-learn">
-            {e.learn.map((l) => (
-              <li key={l.href}>
-                <a href={l.href} className="text-link">
-                  {l.label} <span aria-hidden="true">↗</span>
-                </a>
-              </li>
-            ))}
-          </ul>
         </div>
       </div>
     </section>

@@ -109,9 +109,16 @@ export function Home({ lang }: { lang: Lang }) {
                     </h3>
                     <p className="card__text">{p.summary[lang]}</p>
                     <p className="card__stack">{p.stack.join(", ")}</p>
-                    <a {...ext} href={href} className="text-link">
-                      {label}
-                    </a>
+                    <div className="card__links">
+                      <a {...ext} href={href} className="btn btn--primary btn--sm">
+                        {label}
+                      </a>
+                      {hasCase && p.live && (
+                        <a target="_blank" rel="noopener noreferrer" href={liveHref(p, lang)} className="btn btn--ghost btn--sm">
+                          {t.work.liveLink}
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </article>
               );

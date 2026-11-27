@@ -7,7 +7,7 @@ import type { Lang } from "@/lib/i18n";
 
 type T = Record<Lang, string>;
 
-export type CoverKind = "rongalong" | "kanban" | "data";
+export type CoverKind = "rongalong" | "kissa" | "kanban" | "data";
 
 export type Project = {
   slug: string;
@@ -84,6 +84,61 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: "kissa",
+    title: "Kissa",
+    tag: { pt: "Landing page", en: "Landing page" },
+    summary: {
+      pt: "Site de um café japonês de bairro, fictício, na Vila Mariana: cardápio na página, horário, como chegar e pedido pelo iFood, com identidade visual própria.",
+      en: "Website for a fictional Japanese neighbourhood café in São Paulo: menu on the page, hours, directions and iFood ordering, with its own visual identity.",
+    },
+    stack: ["Next.js", "CSS", "Vercel"],
+    cover: "kissa",
+    live: "/demos/kissa",
+    code: "https://github.com/gabsgarcia/portfolio/tree/main/components/kissa",
+    caseStudy: {
+      lead: {
+        pt: "Um café de bairro com cara de lugar de verdade, não de template.",
+        en: "A neighbourhood café that looks like a real place, not a template.",
+      },
+      problem: {
+        pt: [
+          "Os sites de cafeteria costumam ter os mesmos problemas: o cardápio é um PDF pesado e desatualizado, o horário não aparece na página inicial e o visual é o mesmo bege com caramelo de sempre.",
+          "O Kissa é um café fictício, criado para mostrar o que eu entrego para um pequeno negócio de comida. Ele é um kissaten, o café de bairro japonês, com dois públicos: jovens que amam cultura japonesa e as famílias nikkeis da região, que reparam se algo é falso.",
+        ],
+        en: [
+          "Café websites tend to share the same problems: the menu is a heavy, outdated PDF, the opening hours aren't on the home page, and the look is the same beige and caramel as everyone else's.",
+          "Kissa is a fictional café, made to show what I deliver for a small food business. It is a kissaten, the Japanese neighbourhood café, with two audiences: young fans of Japanese culture and the local Japanese-Brazilian families, who notice when something is fake.",
+        ],
+      },
+      solution: {
+        pt: [
+          "Uma página só, com o que o cliente procura: cardápio, horário com o dia de hoje marcado, \"aberto agora\" no horário de São Paulo, como chegar a partir do metrô e o botão do iFood sempre à mão no celular.",
+          "A identidade vem do próprio assunto: verde matcha profundo, papel cru, tinta sumi e um carimbo hanko vermelho com 喫茶. O nome japonês vem explicado logo no topo e na prévia do link, para quem não lê japonês.",
+        ],
+        en: [
+          "One page with what customers look for: the menu, opening hours with today highlighted, \"open now\" in São Paulo time, directions from the metro and the iFood button always within reach on a phone.",
+          "The identity comes from the subject: deep matcha green, raw paper, sumi ink and a red hanko stamp reading 喫茶. The Japanese name is explained right at the top and in the link preview, for people who don't read Japanese.",
+        ],
+      },
+      decisions: {
+        pt: [
+          { name: "Cardápio na página, não em PDF", text: "Carrega na hora no celular, o Google consegue ler e não existe o risco de dois PDFs diferentes no ar. Cada nome japonês tem uma linha dizendo o que é." },
+          { name: "Um só momento de movimento", text: "O carimbo é \"carimbado\" ao abrir e a sombra de folhas balança devagar sobre a foto. O resto fica quieto, como um kissaten. Quem pede menos movimento vê tudo parado." },
+          { name: "Cultura japonesa sem caricatura", text: "Nada de sakura ou samurai. Detalhes reais: escrita vertical, carimbo hanko, cortina noren, nomes do cardápio em japonês correto." },
+          { name: "Fotos de detalhe, não do salão", text: "Fotos de perto, a 45 graus, com luz de janela. Detalhes do espaço no lugar de fotos do salão inteiro, que a IA costuma errar." },
+          { name: "Pronto para crescer", text: "Os botões de pedido viram links reais no site de um cliente. O próximo passo é um cardápio que o dono edita sozinho, ou um sistema de pedidos próprio, sem a comissão do iFood." },
+        ],
+        en: [
+          { name: "Menu on the page, not a PDF", text: "It loads at once on a phone, Google can read it, and there is no risk of two different PDFs online. Every Japanese name has a line saying what it is." },
+          { name: "One moment of motion", text: "The stamp is pressed onto the page as it opens and a leaf shadow sways slowly over the photo. Everything else stays still, like a kissaten. Visitors who ask for less motion see it all static." },
+          { name: "Japanese culture without caricature", text: "No cherry blossoms or samurai. Real details: vertical writing, a hanko stamp, a noren curtain, menu names in correct Japanese." },
+          { name: "Detail shots, not the dining room", text: "Close photos at 45 degrees in window light. Details of the space instead of wide room shots, which AI tends to get wrong." },
+          { name: "Ready to grow", text: "On a client's site the order buttons become real links. The next step is a menu the owner edits alone, or an ordering system of their own, without iFood's commission." },
+        ],
+      },
+    },
+  },
+  {
     slug: "job-tracker",
     title: "Job Tracker",
     tag: { pt: "Ferramenta com IA", en: "AI tool" },
@@ -108,6 +163,13 @@ export const projects: Project[] = [
     code: "https://github.com/gabsgarcia/analytics_engineering_project",
   },
 ];
+
+/** A live link on this site gets the /en prefix in English; outside links stay as they are. */
+export function liveHref(project: Project, lang: Lang) {
+  const live = project.live;
+  if (!live || !live.startsWith("/")) return live;
+  return lang === "en" ? `/en${live}` : live;
+}
 
 export function getProject(slug: string) {
   return projects.find((p) => p.slug === slug);

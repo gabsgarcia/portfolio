@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { projects } from "@/content/projects";
+import { liveHref, projects } from "@/content/projects";
 import { dict, EMAIL, GITHUB, LINKEDIN, projectPath, type Lang } from "@/lib/i18n";
 import { Cover } from "./Cover";
 import { SingingLyric } from "./SingingLyric";
@@ -82,7 +82,7 @@ export function Home({ lang }: { lang: Lang }) {
                   {t.work.caseLink}
                 </Link>
                 {featured.live && (
-                  <a target="_blank" rel="noopener noreferrer" href={featured.live} className="btn btn--ghost btn--sm">
+                  <a target="_blank" rel="noopener noreferrer" href={liveHref(featured, lang)} className="btn btn--ghost btn--sm">
                     {t.work.liveLink}
                   </a>
                 )}
@@ -92,21 +92,25 @@ export function Home({ lang }: { lang: Lang }) {
 
           <div className="card-grid">
             {others.map((p) => {
-              const href = p.live ?? p.code ?? "#";
+              // Projects with a case study open it here; the rest go straight to the site or the code.
+              const hasCase = !!p.caseStudy;
+              const href = hasCase ? projectPath(lang, p.slug) : (liveHref(p, lang) ?? p.code ?? "#");
+              const ext = hasCase ? {} : { target: "_blank", rel: "noopener noreferrer" };
+              const label = hasCase ? t.work.caseLink : p.live ? t.work.liveLink : t.work.codeLink;
               return (
                 <article className="card" key={p.slug}>
-                  <a target="_blank" rel="noopener noreferrer" href={href} className="card__media" tabIndex={-1} aria-hidden="true">
+                  <a {...ext} href={href} className="card__media" tabIndex={-1} aria-hidden="true">
                     <Cover kind={p.cover} lang={lang} />
                   </a>
                   <div className="card__body">
                     <span className="tag">{p.tag[lang]}</span>
                     <h3 className="card__title">
-                      <a target="_blank" rel="noopener noreferrer" href={href}>{p.title}</a>
+                      <a {...ext} href={href}>{p.title}</a>
                     </h3>
                     <p className="card__text">{p.summary[lang]}</p>
                     <p className="card__stack">{p.stack.join(", ")}</p>
-                    <a target="_blank" rel="noopener noreferrer" href={href} className="text-link">
-                      {p.live ? t.work.liveLink : t.work.codeLink}
+                    <a {...ext} href={href} className="text-link">
+                      {label}
                     </a>
                   </div>
                 </article>

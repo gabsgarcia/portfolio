@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { kissaPath } from "@/content/kissa";
 import { projects } from "@/content/projects";
 import { homePath, labPath, projectPath, type Lang } from "@/lib/i18n";
 import { SITE_URL } from "@/lib/meta";
@@ -8,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const pages: ((lang: Lang) => string)[] = [
     homePath,
     labPath,
+    kissaPath,
     ...projects.filter((p) => p.caseStudy).map((p) => (lang: Lang) => projectPath(lang, p.slug)),
   ];
   return pages.flatMap((path) =>

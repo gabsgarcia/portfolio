@@ -7,7 +7,7 @@ import type { Lang } from "@/lib/i18n";
 
 type T = Record<Lang, string>;
 
-export type CoverKind = "rongalong" | "kissa" | "kanban" | "data";
+export type CoverKind = "rongalong" | "kissa" | "prumo" | "kanban" | "data";
 
 export type Project = {
   slug: string;
@@ -134,6 +134,61 @@ export const projects: Project[] = [
           { name: "Japanese culture without caricature", text: "No cherry blossoms or samurai. Real details: vertical writing, a hanko stamp, a noren curtain, menu names in correct Japanese." },
           { name: "Detail shots, not the dining room", text: "Close photos at 45 degrees in window light. Details of the space instead of wide room shots, which AI tends to get wrong." },
           { name: "Ready to grow", text: "On a client's site the order buttons become real links. The next step is a menu the owner edits alone, or an ordering system of their own, without iFood's commission." },
+        ],
+      },
+    },
+  },
+  {
+    slug: "prumo",
+    title: "Prumo",
+    tag: { pt: "Site com assistente de IA", en: "Website with an AI assistant" },
+    summary: {
+      pt: "Site de um estúdio de pilates clínico, fictício, em Belo Horizonte, com um assistente de IA que responde só com as informações do estúdio e passa para a recepção quando não sabe.",
+      en: "Website for a fictional clinical pilates studio in Belo Horizonte, with an AI assistant that answers only from the studio's own information and hands over to reception when it doesn't know.",
+    },
+    stack: ["Next.js", "Claude API", "Supabase", "Vercel"],
+    cover: "prumo",
+    live: "/demos/prumo",
+    code: "https://github.com/gabsgarcia/portfolio/tree/main/components/prumo",
+    caseStudy: {
+      lead: {
+        pt: "Um estúdio de saúde que tira o medo da primeira aula, e um assistente que sabe quando chamar uma pessoa.",
+        en: "A health studio that takes the fear out of the first class, and an assistant that knows when to call a person.",
+      },
+      problem: {
+        pt: [
+          "Quem procura pilates clínico quase sempre chega com dor, uma cirurgia recente ou uma recomendação médica, e com receio: não sabe o que vai acontecer na primeira aula nem se o corpo aguenta.",
+          "A recepção de um estúdio pequeno responde as mesmas perguntas o dia todo pelo WhatsApp: se pode com hérnia, quanto custa, se aceita plano de saúde. O Prumo é um estúdio fictício, criado para mostrar o que eu entrego para clínicas e consultórios.",
+        ],
+        en: [
+          "People looking for clinical pilates almost always arrive with pain, a recent surgery or a doctor's recommendation, and with some fear: they don't know what will happen in the first class or whether their body can take it.",
+          "The front desk of a small studio answers the same questions all day on WhatsApp: can I come with a herniated disc, how much is it, do you take health plans. Prumo is a fictional studio, made to show what I deliver for clinics and practices.",
+        ],
+      },
+      solution: {
+        pt: [
+          "Uma página com um objetivo só: agendar a avaliação inicial. A primeira aula é contada passo a passo, com o tempo de cada etapa, e o desenho da coluna vai se alinhando enquanto a pessoa lê.",
+          "O assistente responde com uma base de respostas escrita pelo estúdio, que o dono pode editar. Ele não dá diagnóstico, manda procurar um médico diante de sinais de alerta e, quando não sabe, diz isso e oferece a recepção.",
+        ],
+        en: [
+          "One page with a single goal: booking the first assessment. The first class is told step by step, with the time each part takes, and the drawing of the spine straightens as the visitor reads.",
+          "The assistant answers from a knowledge base written by the studio, which the owner can edit. It never diagnoses, points to a doctor when there are warning signs and, when it doesn't know, says so and offers reception.",
+        ],
+      },
+      decisions: {
+        pt: [
+          { name: "Prancha de anatomia, não branco de hospital", text: "Papel milimetrado, tinta azul e um fio de prumo vermelho: a linha que o estúdio usa para avaliar a postura virou a marca. O laranja tijolo aparece só no botão de agendar." },
+          { name: "Um assistente que admite quando não sabe", text: "Ele responde só com as informações do estúdio. Pergunta fora disso vira um botão para a recepção. Nenhum dado pessoal é pedido nem guardado." },
+          { name: "Custo sob controle", text: "Modelo rápido e barato, a base inteira em cache, limite de perguntas por visitante e por dia, e teto de gasto na conta. O cliente sabe quanto vai pagar no mês." },
+          { name: "Um só momento de movimento", text: "O fio de prumo desce e balança ao abrir a página, e a coluna se alinha na seção da primeira aula. Quem pede menos movimento vê tudo parado." },
+          { name: "Mapa só quando pedido", text: "O mapa do Google carrega só com um toque: a página fica mais leve e nada vai para o Google antes disso. O formulário tem uma armadilha invisível para robôs de spam." },
+        ],
+        en: [
+          { name: "An anatomy plate, not hospital white", text: "Graph paper, blue ink and a red plumb line: the line the studio uses to assess posture became the brand. Brick orange appears only on the booking button." },
+          { name: "An assistant that admits when it doesn't know", text: "It answers only from the studio's information. Anything else becomes a button to reception. No personal data is asked for or stored." },
+          { name: "Costs under control", text: "A fast, low-cost model, the whole knowledge base cached, a daily question limit per visitor and for the whole site, and a spending cap on the account. The client knows what the month will cost." },
+          { name: "One moment of motion", text: "The plumb line drops and swings as the page opens, and the spine straightens in the first-class section. Visitors who ask for less motion see it all static." },
+          { name: "Map only when asked", text: "Google's map loads only on a tap: the page is lighter and nothing goes to Google before that. The form has an invisible trap for spam bots." },
         ],
       },
     },

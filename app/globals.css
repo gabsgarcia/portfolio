@@ -451,6 +451,33 @@ h3 {
 .kissa-cv-menu li { display: flex; align-items: baseline; gap: 8px; }
 .kissa-cv-menu i { flex: 1; border-bottom: 2px dotted rgba(236, 234, 221, 0.35); }
 
+/* Prumo keeps its own colours too: graph paper and ink blue. */
+.cover--prumo {
+  display: grid;
+  grid-template-columns: auto minmax(0, 20rem);
+  justify-content: center;
+  align-items: center;
+  gap: clamp(12px, 3vw, 24px);
+  padding: clamp(16px, 3vw, 28px);
+  background-color: #ebe9e3;
+  background-image:
+    linear-gradient(rgba(31, 58, 110, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(31, 58, 110, 0.09) 1px, transparent 1px);
+  background-size: 16px 16px;
+  color: #1c2232;
+}
+.prumo-cv-spine { height: clamp(160px, 24vw, 230px); width: auto; overflow: visible; }
+.prumo-cv-spine .pr-vertebra rect,
+.prumo-cv-spine .pr-vertebra path { fill: #f6f4ee; stroke: #1f3a6e; stroke-width: 2.4; }
+.prumo-cv-spine .pr-vertebra rect + path,
+.prumo-cv-spine .pr-vertebra path + path { fill: none; }
+.prumo-cv-line { stroke: #a3412a; stroke-width: 1.5; stroke-dasharray: 5 5; fill: none; }
+.prumo-cv-chat { display: grid; gap: 8px; max-width: 20rem; font-size: 0.85rem; line-height: 1.35; }
+.prumo-cv-name { font-weight: 700; color: #1f3a6e; font-size: 1.4rem; letter-spacing: -0.02em; }
+.prumo-cv-chat p { margin: 0; padding: 8px 10px; border-radius: 6px; }
+.prumo-cv-you { justify-self: end; background: #1f3a6e; color: #f6f4ee; }
+.prumo-cv-bot { background: #f6f4ee; border-left: 2px solid #1f3a6e; }
+
 .cover--kanban {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

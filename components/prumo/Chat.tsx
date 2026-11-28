@@ -245,7 +245,8 @@ export function Chat({ t, whatsappNote }: { t: ChatCopy; whatsappNote: string })
                 ) : (
                   <p className="pr-thinking">{t.thinking}</p>
                 )}
-                {m.done && (a.book || a.reception) && (
+                {/* Every finished answer leaves a way to a person, whatever the model decided. */}
+                {m.done && a.text && (
                   <DemoLink note={whatsappNote} strong={a.book}>
                     {a.book ? t.book : t.reception}
                   </DemoLink>

@@ -1,4 +1,5 @@
 import type { CoverKind } from "@/content/projects";
+import { Spine } from "@/components/prumo/Spine";
 
 // Drawn covers: a faithful sketch of each product's main screen, made in
 // HTML so it stays sharp and themed. Swap for real screenshots any time
@@ -7,6 +8,7 @@ import type { CoverKind } from "@/content/projects";
 export function Cover({ kind, lang }: { kind: CoverKind; lang: "pt" | "en" }) {
   if (kind === "rongalong") return <RongAlongCover lang={lang} />;
   if (kind === "kissa") return <KissaCover />;
+  if (kind === "prumo") return <PrumoCover lang={lang} />;
   if (kind === "kanban") return <KanbanCover />;
   return <DataCover />;
 }
@@ -59,6 +61,25 @@ function KissaCover() {
           </li>
         ))}
       </ul>
+    </div>
+  );
+}
+
+// The Prumo demo in miniature: graph paper, the spine plate and one chat exchange.
+function PrumoCover({ lang }: { lang: "pt" | "en" }) {
+  const q = lang === "pt" ? "Tenho hérnia, posso fazer?" : "I have a herniated disc, can I do it?";
+  const a = lang === "pt" ? "Na maioria dos casos, pode. A avaliação define o que fazer no seu caso." : "In most cases, yes. The assessment decides what is right for you.";
+  return (
+    <div className="cover cover--prumo" aria-hidden="true">
+      <svg className="prumo-cv-spine" viewBox="60 0 180 620">
+        <path className="prumo-cv-line" d="M150 6V600" />
+        <Spine pose={1} />
+      </svg>
+      <div className="prumo-cv-chat">
+        <span className="prumo-cv-name">Prumo</span>
+        <p className="prumo-cv-you">{q}</p>
+        <p className="prumo-cv-bot">{a}</p>
+      </div>
     </div>
   );
 }
